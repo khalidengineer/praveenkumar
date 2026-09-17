@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Royal Bridal Couture & Trousseau — LIVORA</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'livora-dark': '#162E25',
+            'livora-sage': '#244A3C',
+            'livora-bg': '#FAF8F5',
+            'livora-cream': '#EFE7DE',
+            'livora-gold': '#C5A880',
+            'livora-sale': '#DC2626',
+            'livora-border': '#EAE6DF'
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            display: ['"Playfair Display"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            script: ['"Alex Brush"', 'cursive']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+
+<body class="antialiased pb-20 md:pb-0">
+
+  <!-- TOP BAR -->
+  <div class="bg-livora-dark text-white text-[11px] md:text-xs py-2 px-4 font-medium tracking-wide">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="hidden md:block w-1/4"></div>
+      <div class="text-center w-full md:w-auto flex items-center justify-center gap-2">
+        <span class="text-amber-300">✨</span>
+        <span>Free Insured Worldwide Shipping on Orders Over $50</span>
+        <span class="hidden sm:inline text-livora-gold">|</span>
+        <span class="hidden sm:inline text-stone-300">Timeless Jewels. Radiant Couture.</span>
+      </div>
+      <div class="hidden md:flex justify-end items-center gap-5 w-1/4 text-stone-300 text-[11px]">
+        <a href="track-order.html" class="hover:text-white transition">Track Order</a>
+        <span class="text-stone-500">|</span>
+        <a href="help.html" class="hover:text-white transition">Concierge & Help</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-livora-border shadow-sm" id="main-header">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <button class="md:hidden text-livora-dark p-2 hover:bg-stone-100 rounded-lg transition" onclick="toggleMobileDrawer()" aria-label="Open Menu">
+          <i class="fa-solid fa-bars text-lg"></i>
+        </button>
+        <a href="index.html" class="flex items-center gap-2 group">
+          <div class="w-8 h-8 rounded-lg bg-livora-dark flex items-center justify-center text-white shadow-sm">
+            <i class="fa-regular fa-gem text-sm text-livora-gold"></i>
+          </div>
+          <div>
+            <span class="font-display font-bold text-xl md:text-2xl tracking-[0.15em] text-livora-dark block leading-none">LIVORA</span>
+            <span class="text-[8px] md:text-[9px] tracking-[0.25em] text-stone-500 uppercase block font-semibold mt-0.5">Haute Jewels & Couture</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="hidden md:flex flex-1 max-w-xl mx-6">
+        <div class="relative w-full">
+          <input type="text" placeholder="Search bridal lehengas, kundan sets, veil silks..." class="w-full pl-4 pr-12 py-2.5 bg-stone-50 text-xs md:text-sm rounded-full border border-stone-200 focus:outline-none focus:border-livora-dark" />
+          <button class="absolute right-1 top-1 bottom-1 w-9 bg-livora-dark text-white rounded-full flex items-center justify-center">
+            <i class="fa-solid fa-magnifying-glass text-xs"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4 sm:gap-6 text-livora-dark">
+        <a href="account.html" class="hidden sm:flex flex-col items-center"><i class="fa-regular fa-user text-base"></i><span class="text-[11px] mt-0.5">Account</span></a>
+        <a href="wishlist.html" class="flex flex-col items-center relative">
+          <div class="relative">
+            <i class="fa-regular fa-heart text-base"></i>
+            <span class="wishlist-counter-badge absolute -top-1.5 -right-2 bg-livora-dark text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">2</span>
+          </div>
+          <span class="hidden sm:inline text-[11px] mt-0.5">Wishlist</span>
+        </a>
+        <button onclick="toggleCartDrawer()" class="flex items-center gap-2 bg-stone-100 px-3 py-1.5 rounded-full">
+          <div class="relative">
+            <i class="fa-solid fa-bag-shopping text-base text-livora-dark"></i>
+            <span class="cart-counter-badge absolute -top-2 -right-2.5 bg-livora-dark text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">3</span>
+          </div>
+          <span class="cart-header-total text-xs font-semibold text-livora-dark hidden sm:inline">$1,647</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- SUB CATEGORY BAR -->
+    <div class="border-t border-livora-border/60 bg-livora-bg overflow-x-auto no-scrollbar">
+      <div class="max-w-7xl mx-auto px-4 flex items-center justify-between gap-6 py-2.5 text-[11.5px] font-medium text-stone-700 whitespace-nowrap min-w-max">
+        <a href="fine-jewelry.html" class="flex items-center gap-1.5 hover:text-livora-dark transition"><i class="fa-solid fa-gem text-xs"></i> Fine Jewelry</a>
+        <a href="chokers.html" class="flex items-center gap-1.5 hover:text-livora-dark transition"><i class="fa-solid fa-necklace text-xs"></i> Necklaces & Chokers</a>
+        <a href="rings.html" class="flex items-center gap-1.5 hover:text-livora-dark transition"><i class="fa-solid fa-ring text-xs"></i> Solitaire Rings</a>
+        <a href="gowns.html" class="flex items-center gap-1.5 hover:text-livora-dark transition"><i class="fa-solid fa-person-dress text-xs"></i> Evening Gowns</a>
+        <a href="bridal.html" class="flex items-center gap-1.5 text-livora-dark font-bold border-b border-livora-dark pb-0.5"><i class="fa-solid fa-crown text-xs"></i> Bridal Lehengas</a>
+        <a href="earrings.html" class="flex items-center gap-1.5 hover:text-livora-dark transition"><i class="fa-solid fa-sparkles text-xs"></i> Earrings & Drops</a>
+        <a href="sale.html" class="flex items-center gap-1.5 text-livora-sale font-bold bg-red-50 px-2.5 py-0.5 rounded-full"><i class="fa-solid fa-tags text-xs"></i> Special Sale</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB & HERO -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-6">
+    <div class="text-xs text-stone-500 mb-4">
+      <a href="index.html" class="hover:text-livora-dark">Home</a> / <span class="text-livora-dark font-medium">Bridal Couture</span>
+    </div>
+
+    <div class="bg-[#2E1A17] text-white rounded-2xl p-8 sm:p-12 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="max-w-md z-10">
+        <span class="text-[10px] tracking-widest uppercase font-semibold text-livora-gold mb-2 block">ROYAL HERITAGE</span>
+        <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal mb-3">Bridal Lehengas & Trousseau</h1>
+        <p class="text-xs sm:text-sm text-stone-300 font-light leading-relaxed mb-6">
+          Heirloom raw silk lehengas hand-woven with pure metallic zardozi, paired with royal Polki and uncut diamond jewelry.
+        </p>
+        <button onclick="openStylistModal()" class="bg-livora-gold hover:bg-amber-600 text-stone-950 font-semibold px-6 py-2.5 rounded-full text-xs transition shadow-md">
+          Book Bridal Atelier Styling
+        </button>
+      </div>
+      <div class="rounded-xl overflow-hidden aspect-square w-48 sm:w-64 z-10 border border-white/20 shadow-2xl">
+        <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover" />
+      </div>
+    </div>
+  </section>
+
+  <!-- BRIDAL ITEMS -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+      
+      <!-- Bridal 1 -->
+      <!-- Bridal 1 -->
+      <div class="bg-white rounded-xl border border-stone-100 p-3.5 luxury-card flex flex-col justify-between">
+        <div class="relative rounded-lg overflow-hidden bg-stone-100 aspect-[3/4] mb-3">
+          <span class="absolute top-2 left-2 z-10 bg-livora-dark text-white text-[9px] font-semibold px-2 py-0.5 rounded">Heirloom</span>
+          <button onclick="toggleWishlist('Royal Crimson Bridal Lehenga', 1450, 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=400&auto=format&fit=crop', this)" class="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-white/90 text-stone-600 hover:text-red-500 flex items-center justify-center">
+            <i class="fa-regular fa-heart text-xs"></i>
+          </button>
+          <a href="product-detail.html?name=Royal%20Crimson%20Bridal%20Lehenga&price=1450&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1610030469983-98e550d6193c%3Fq%3D80%26w%3D400%26auto%3Dformat%26fit%3Dcrop&cat=Luxury%20Bridal" class="block w-full h-full">
+            <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+          </a>
+        </div>
+        <div>
+          <a href="product-detail.html?name=Royal%20Crimson%20Bridal%20Lehenga&price=1450&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1610030469983-98e550d6193c%3Fq%3D80%26w%3D400%26auto%3Dformat%26fit%3Dcrop&cat=Luxury%20Bridal" class="hover:text-livora-sage transition">
+            <h3 class="font-medium text-xs sm:text-sm text-livora-dark hover:text-livora-sage transition truncate">Royal Crimson Bridal Lehenga</h3>
+          </a>
+          <div class="text-xs sm:text-sm font-bold text-livora-dark mt-1">$1,450</div>
+          <div class="flex items-center gap-1 text-[10px] text-amber-500 mt-1">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <span class="text-stone-400">(42)</span>
+          </div>
+        </div>
+        <button onclick="addToCart('Royal Crimson Bridal Lehenga', 1450, 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=400&auto=format&fit=crop')" class="mt-3 w-full py-1.5 bg-stone-100 hover:bg-livora-dark hover:text-white text-livora-dark text-xs font-semibold rounded-lg transition">
+          + Add to Bag
+        </button>
+      </div>
+
+      <!-- Bridal 2 -->
+      <div class="bg-white rounded-xl border border-stone-100 p-3.5 luxury-card flex flex-col justify-between">
+        <div class="relative rounded-lg overflow-hidden bg-stone-100 aspect-[3/4] mb-3">
+          <span class="absolute top-2 left-2 z-10 bg-livora-sage text-white text-[9px] font-semibold px-2 py-0.5 rounded">Pastel Silk</span>
+          <button onclick="toggleWishlist('Mira Embroidered Pastel Lehenga', 990, 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=400&auto=format&fit=crop', this)" class="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-white/90 text-stone-600 hover:text-red-500 flex items-center justify-center">
+            <i class="fa-regular fa-heart text-xs"></i>
+          </button>
+          <a href="product-detail.html?name=Mira%20Pastel%20Floral%20Lehenga&price=990&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1583391733956-3750e0ff4e8b%3Fq%3D80%26w%3D400%26auto%3Dformat%26fit%3Dcrop&cat=Luxury%20Bridal" class="block w-full h-full">
+            <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+          </a>
+        </div>
+        <div>
+          <a href="product-detail.html?name=Mira%20Pastel%20Floral%20Lehenga&price=990&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1583391733956-3750e0ff4e8b%3Fq%3D80%26w%3D400%26auto%3Dformat%26fit%3Dcrop&cat=Luxury%20Bridal" class="hover:text-livora-sage transition">
+            <h3 class="font-medium text-xs sm:text-sm text-livora-dark hover:text-livora-sage transition truncate">Mira Pastel Floral Lehenga</h3>
+          </a>
+          <div class="text-xs sm:text-sm font-bold text-livora-dark mt-1">$990</div>
+          <div class="flex items-center gap-1 text-[10px] text-amber-500 mt-1">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <span class="text-stone-400">(68)</span>
+          </div>
+        </div>
+        <button onclick="addToCart('Mira Pastel Floral Lehenga', 990, 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=400&auto=format&fit=crop')" class="mt-3 w-full py-1.5 bg-stone-100 hover:bg-livora-dark hover:text-white text-livora-dark text-xs font-semibold rounded-lg transition">
+          + Add to Bag
+        </button>
+      </div>
+
+      <!-- Bridal 3 -->
+      <div class="bg-white rounded-xl border border-stone-100 p-3.5 luxury-card flex flex-col justify-between">
+        <div class="relative rounded-lg overflow-hidden bg-stone-100 aspect-[3/4] mb-3">
+          <span class="absolute top-2 left-2 z-10 bg-livora-gold text-white text-[9px] font-semibold px-2 py-0.5 rounded">Uncut Polki</span>
+          <button onclick="toggleWishlist('Eden Royal Kundan Set', 179, 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=400&auto=format&fit=crop', this)" class="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-white/90 text-stone-600 hover:text-red-500 flex items-center justify-center">
+            <i class="fa-regular fa-heart text-xs"></i>
+          </button>
+          <a href="product-detail.html?name=Eden%20Royal%20Kundan%20Bridal%20Set&price=179&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1535632066927-ab7c9ab60908%3Fq%3D80%26w%3D400%26auto%3Dformat%26fit%3Dcrop&cat=Fine%20Jewelry" class="block w-full h-full">
+            <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+          </a>
+        </div>
+        <div>
+          <a href="product-detail.html?name=Eden%20Royal%20Kundan%20Bridal%20Set&price=179&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1535632066927-ab7c9ab60908%3Fq%3D80%26w%3D400%26auto%3Dformat%26fit%3Dcrop&cat=Fine%20Jewelry" class="hover:text-livora-sage transition">
+            <h3 class="font-medium text-xs sm:text-sm text-livora-dark hover:text-livora-sage transition truncate">Eden Royal Kundan Bridal Set</h3>
+          </a>
+          <div class="text-xs sm:text-sm font-bold text-livora-dark mt-1">$179</div>
+          <div class="flex items-center gap-1 text-[10px] text-amber-500 mt-1">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <span class="text-stone-400">(199)</span>
+          </div>
+        </div>
+        <button onclick="addToCart('Eden Royal Kundan Bridal Set', 179, 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=400&auto=format&fit=crop')" class="mt-3 w-full py-1.5 bg-stone-100 hover:bg-livora-dark hover:text-white text-livora-dark text-xs font-semibold rounded-lg transition">
+          + Add to Bag
+        </button>
+      </div>
+
+      <!-- Bridal 4 -->
+      <div class="bg-white rounded-xl border border-stone-100 p-3.5 luxury-card flex flex-col justify-between">
+        <div class="relative rounded-lg overflow-hidden bg-stone-100 aspect-[3/4] mb-3">
+          <button onclick="toggleWishlist('Handcrafted Silk Organza Dupatta', 39, 'https://images.unsplash.com/photo-1518895949257-7621c3c786d7?q=80&w=400&auto=format&fit=crop', this)" class="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-white/90 text-stone-600 hover:text-red-500 flex items-center justify-center">
+            <i class="fa-regular fa-heart text-xs"></i>
+          </button>
+          <a href="product-detail.html?name=Silk%20Organza%20Bridal%20Dupatta&price=39&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1518895949257-7621c3c786d7%3Fq%3D80%26w%3D400%26auto%3Dformat%26fit%3Dcrop&cat=Luxury%20Bridal" class="block w-full h-full">
+            <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+          </a>
+        </div>
+        <div>
+          <a href="product-detail.html?name=Silk%20Organza%20Bridal%20Dupatta&price=39&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1518895949257-7621c3c786d7%3Fq%3D80%26w%3D400%26auto%3Dformat%26fit%3Dcrop&cat=Luxury%20Bridal" class="hover:text-livora-sage transition">
+            <h3 class="font-medium text-xs sm:text-sm text-livora-dark hover:text-livora-sage transition truncate">Silk Organza Bridal Dupatta</h3>
+          </a>
+          <div class="text-xs sm:text-sm font-bold text-livora-dark mt-1">$39</div>
+          <div class="flex items-center gap-1 text-[10px] text-amber-500 mt-1">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <span class="text-stone-400">(51)</span>
+          </div>
+        </div>
+        <button onclick="addToCart('Silk Organza Bridal Dupatta', 39, 'https://images.unsplash.com/photo-1518895949257-7621c3c786d7?q=80&w=400&auto=format&fit=crop')" class="mt-3 w-full py-1.5 bg-stone-100 hover:bg-livora-dark hover:text-white text-livora-dark text-xs font-semibold rounded-lg transition">
+          + Add to Bag
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STYLIST APPOINTMENT MODAL -->
+  <div id="stylist-modal" class="fixed inset-0 z-50 flex items-center justify-center pointer-events-none opacity-0 transition-opacity duration-300">
+    <div onclick="closeStylistModal()" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="bg-white rounded-2xl p-6 sm:p-8 max-w-md w-full mx-4 z-10 shadow-2xl relative">
+      <button onclick="closeStylistModal()" class="absolute top-4 right-4 text-stone-400 hover:text-stone-700">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+      <h3 class="font-serif text-2xl text-livora-dark font-medium mb-1">Book Bridal Salon Consultation</h3>
+      <p class="text-xs text-stone-500 mb-4">Meet 1-on-1 with a master jeweler & couture draper.</p>
+      
+      <form onsubmit="handleStylistBooking(event)" class="space-y-3 text-xs">
+        <div>
+          <label class="font-semibold block mb-1">Bride's Full Name</label>
+          <input type="text" required class="w-full p-2.5 border border-stone-200 rounded-lg" placeholder="e.g. Sarah Khan" />
+        </div>
+        <div>
+          <label class="font-semibold block mb-1">Wedding Date</label>
+          <input type="date" required class="w-full p-2.5 border border-stone-200 rounded-lg" />
+        </div>
+        <div>
+          <label class="font-semibold block mb-1">Consultation Mode</label>
+          <select class="w-full p-2.5 border border-stone-200 rounded-lg">
+            <option>Virtual VIP HD Video Consultation</option>
+            <option>Atelier Boutique Private Lounge</option>
+          </select>
+        </div>
+        <button type="submit" class="w-full py-3 bg-livora-dark text-white font-semibold rounded-xl hover:bg-livora-sage transition mt-2">
+          Confirm Appointment
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ANDROID APP BOTTOM BAR -->
+  <nav class="md:hidden android-bottom-bar px-3 py-1">
+    <div class="flex items-center justify-around text-center">
+      <a href="index.html" class="android-tab"><i class="fa-solid fa-house"></i><span>Home</span></a>
+      <a href="fine-jewelry.html" class="android-tab active"><i class="fa-solid fa-shapes"></i><span>Catalog</span></a>
+      <a href="wishlist.html" class="android-tab relative"><i class="fa-regular fa-heart"></i><span class="wishlist-counter-badge absolute top-0.5 right-2 bg-livora-dark text-white text-[8px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center">2</span><span>Wishlist</span></a>
+      <a href="cart.html" class="android-tab relative"><i class="fa-solid fa-bag-shopping"></i><span class="cart-counter-badge absolute top-0.5 right-2 bg-livora-dark text-white text-[8px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center">3</span><span>Bag</span></a>
+      <a href="account.html" class="android-tab"><i class="fa-regular fa-user"></i><span>Profile</span></a>
+    </div>
+  </nav>
+
+  <!-- CART DRAWER -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 pointer-events-none transition-opacity duration-300 opacity-0">
+    <div onclick="toggleCartDrawer()" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+    <div id="cart-panel" class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col justify-between transform translate-x-full transition-transform duration-300 pointer-events-auto">
+      <div class="p-4 sm:p-5 border-b border-stone-200 flex items-center justify-between bg-stone-50">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-bag-shopping text-livora-dark"></i>
+          <h3 class="font-serif text-lg font-semibold text-livora-dark">Your Shopping Bag (<span id="drawer-item-count">3</span>)</h3>
+        </div>
+        <button onclick="toggleCartDrawer()" class="w-8 h-8 rounded-full bg-stone-200 hover:bg-stone-300 flex items-center justify-center">
+          <i class="fa-solid fa-xmark text-stone-700 text-sm"></i>
+        </button>
+      </div>
+      <div class="p-5 flex-1 overflow-y-auto space-y-4 drawer-scroll" id="cart-items-container"></div>
+      <div class="p-5 border-t border-stone-200 bg-stone-50 space-y-3">
+        <div class="flex items-center justify-between text-sm">
+          <span class="text-stone-600">Estimated Total</span>
+          <span class="font-bold text-base text-livora-dark" id="drawer-subtotal">$1,647.00</span>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <a href="cart.html" class="py-3 bg-stone-100 text-livora-dark rounded-xl font-semibold text-xs text-center uppercase tracking-wider hover:bg-stone-200 transition">View Bag</a>
+          <a href="cart.html#checkout" class="py-3 bg-livora-dark text-white rounded-xl font-semibold text-xs text-center uppercase tracking-wider hover:bg-livora-sage transition flex items-center justify-center gap-1.5 shadow-md"><i class="fa-solid fa-lock text-[10px]"></i><span>Checkout</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    function openStylistModal() {
+      const modal = document.getElementById('stylist-modal');
+      modal.classList.remove('pointer-events-none', 'opacity-0');
+    }
+    function closeStylistModal() {
+      const modal = document.getElementById('stylist-modal');
+      modal.classList.add('pointer-events-none', 'opacity-0');
+    }
+    function handleStylistBooking(e) {
+      e.preventDefault();
+      closeStylistModal();
+      showToast("Appointment Confirmed! Our Atelier Concierge will call you shortly.");
+    }
+  </script>
+</body>
+</html>

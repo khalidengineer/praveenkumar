@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Your Saved Vault — LIVORA Haute Jewels</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'livora-dark': '#162E25',
+            'livora-sage': '#244A3C',
+            'livora-bg': '#FAF8F5',
+            'livora-cream': '#EFE7DE',
+            'livora-gold': '#C5A880',
+            'livora-sale': '#DC2626',
+            'livora-border': '#EAE6DF'
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            display: ['"Playfair Display"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            script: ['"Alex Brush"', 'cursive']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+
+<body class="antialiased pb-20 md:pb-0">
+
+  <!-- TOP BAR -->
+  <div class="bg-livora-dark text-white text-[11px] md:text-xs py-2 px-4 font-medium tracking-wide">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="hidden md:block w-1/4"></div>
+      <div class="text-center w-full md:w-auto flex items-center justify-center gap-2">
+        <span class="text-amber-300">✨</span>
+        <span>Your Personal Atelier Vault | Price Protection on Saved Items</span>
+      </div>
+      <div class="hidden md:flex justify-end items-center gap-5 w-1/4 text-stone-300 text-[11px]">
+        <a href="track-order.html" class="hover:text-white transition">Track Order</a>
+        <span class="text-stone-500">|</span>
+        <a href="help.html" class="hover:text-white transition">Concierge & Help</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-livora-border shadow-sm" id="main-header">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <button class="md:hidden text-livora-dark p-2 hover:bg-stone-100 rounded-lg transition" onclick="toggleMobileDrawer()" aria-label="Open Menu">
+          <i class="fa-solid fa-bars text-lg"></i>
+        </button>
+        <a href="index.html" class="flex items-center gap-2 group">
+          <div class="w-8 h-8 rounded-lg bg-livora-dark flex items-center justify-center text-white shadow-sm">
+            <i class="fa-regular fa-gem text-sm text-livora-gold"></i>
+          </div>
+          <div>
+            <span class="font-display font-bold text-xl md:text-2xl tracking-[0.15em] text-livora-dark block leading-none">LIVORA</span>
+            <span class="text-[8px] md:text-[9px] tracking-[0.25em] text-stone-500 uppercase block font-semibold mt-0.5">Haute Jewels & Couture</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="flex items-center gap-4 sm:gap-6 text-livora-dark">
+        <a href="fine-jewelry.html" class="text-xs font-semibold hover:text-livora-sage hidden sm:inline">Explore Collection</a>
+        <a href="account.html" class="hidden sm:flex flex-col items-center"><i class="fa-regular fa-user text-base"></i><span class="text-[11px] mt-0.5">Account</span></a>
+        <button onclick="toggleCartDrawer()" class="flex items-center gap-2 bg-stone-100 px-3 py-1.5 rounded-full">
+          <div class="relative">
+            <i class="fa-solid fa-bag-shopping text-base text-livora-dark"></i>
+            <span class="cart-counter-badge absolute -top-2 -right-2.5 bg-livora-dark text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">3</span>
+          </div>
+          <span class="cart-header-total text-xs font-semibold text-livora-dark hidden sm:inline">$1,647</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- WISHLIST MAIN -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+      <div>
+        <h1 class="font-serif text-3xl sm:text-4xl text-livora-dark font-medium">Your Wishlist Vault</h1>
+        <p class="text-xs text-stone-500 mt-1">Saved pieces are kept reserved in your personal private atelier.</p>
+      </div>
+      <button onclick="moveAllToCart()" class="px-5 py-2.5 bg-livora-dark text-white rounded-full text-xs font-semibold hover:bg-livora-sage transition flex items-center gap-2 shadow-sm">
+        <i class="fa-solid fa-bag-shopping text-xs"></i>
+        <span>Move All to Bag</span>
+      </button>
+    </div>
+
+    <!-- Wishlist Items Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6" id="wishlist-page-grid">
+      <!-- Injected by renderWishlistPage() -->
+    </div>
+  </main>
+
+  <!-- ANDROID APP BOTTOM BAR -->
+  <nav class="md:hidden android-bottom-bar px-3 py-1">
+    <div class="flex items-center justify-around text-center">
+      <a href="index.html" class="android-tab"><i class="fa-solid fa-house"></i><span>Home</span></a>
+      <a href="fine-jewelry.html" class="android-tab"><i class="fa-solid fa-shapes"></i><span>Catalog</span></a>
+      <a href="wishlist.html" class="android-tab active relative"><i class="fa-regular fa-heart"></i><span class="wishlist-counter-badge absolute top-0.5 right-2 bg-livora-dark text-white text-[8px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center">2</span><span>Wishlist</span></a>
+      <a href="cart.html" class="android-tab relative"><i class="fa-solid fa-bag-shopping"></i><span class="cart-counter-badge absolute top-0.5 right-2 bg-livora-dark text-white text-[8px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center">3</span><span>Bag</span></a>
+      <a href="account.html" class="android-tab"><i class="fa-regular fa-user"></i><span>Profile</span></a>
+    </div>
+  </nav>
+
+  <!-- CART DRAWER -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 pointer-events-none transition-opacity duration-300 opacity-0">
+    <div onclick="toggleCartDrawer()" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+    <div id="cart-panel" class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col justify-between transform translate-x-full transition-transform duration-300 pointer-events-auto">
+      <div class="p-4 sm:p-5 border-b border-stone-200 flex items-center justify-between bg-stone-50">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-bag-shopping text-livora-dark"></i>
+          <h3 class="font-serif text-lg font-semibold text-livora-dark">Your Shopping Bag (<span id="drawer-item-count">3</span>)</h3>
+        </div>
+        <button onclick="toggleCartDrawer()" class="w-8 h-8 rounded-full bg-stone-200 hover:bg-stone-300 flex items-center justify-center">
+          <i class="fa-solid fa-xmark text-stone-700 text-sm"></i>
+        </button>
+      </div>
+      <div class="p-5 flex-1 overflow-y-auto space-y-4 drawer-scroll" id="cart-items-container"></div>
+      <div class="p-5 border-t border-stone-200 bg-stone-50 space-y-3">
+        <div class="flex items-center justify-between text-sm">
+          <span class="text-stone-600">Estimated Total</span>
+          <span class="font-bold text-base text-livora-dark" id="drawer-subtotal">$1,647.00</span>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <a href="cart.html" class="py-3 bg-stone-100 text-livora-dark rounded-xl font-semibold text-xs text-center uppercase tracking-wider hover:bg-stone-200 transition">View Bag</a>
+          <a href="cart.html#checkout" class="py-3 bg-livora-dark text-white rounded-xl font-semibold text-xs text-center uppercase tracking-wider hover:bg-livora-sage transition flex items-center justify-center gap-1.5 shadow-md"><i class="fa-solid fa-lock text-[10px]"></i><span>Checkout</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    function renderWishlistPage() {
+      const container = document.getElementById('wishlist-page-grid');
+      if (!container) return;
+      const list = getWishlist();
+
+      if (list.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full bg-white rounded-2xl p-12 border border-stone-200 text-center">
+            <div class="w-16 h-16 bg-stone-100 rounded-full flex items-center justify-center mx-auto mb-4 text-stone-400">
+              <i class="fa-regular fa-heart text-2xl"></i>
+            </div>
+            <h3 class="font-serif text-2xl text-livora-dark mb-2">Your Vault is Empty</h3>
+            <p class="text-xs text-stone-500 mb-6">Discover diamonds, bridal lehengas, and cocktail gowns to curate your private collection.</p>
+            <a href="fine-jewelry.html" class="px-7 py-3 bg-livora-dark text-white rounded-full text-xs font-semibold hover:bg-livora-sage transition">
+              Explore Collections
+            </a>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = list.map(item => `
+        <div class="bg-white rounded-xl border border-stone-100 p-3.5 luxury-card flex flex-col justify-between relative shadow-sm">
+          <div class="relative rounded-lg overflow-hidden bg-stone-100 aspect-square mb-3">
+            <button onclick="toggleWishlist('${item.name}', ${item.price}, '${item.img}', this, '${item.id}')" class="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-white text-red-500 flex items-center justify-center shadow-sm">
+              <i class="fa-solid fa-heart text-xs"></i>
+            </button>
+            <a href="product-detail.html?name=${encodeURIComponent(item.name)}&price=${item.price}&img=${encodeURIComponent(item.img)}" class="block w-full h-full">
+            <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+          </a>
+        </div>
+        <div>
+          <a href="product-detail.html?name=${encodeURIComponent(item.name)}&price=${item.price}&img=${encodeURIComponent(item.img)}" class="hover:text-livora-sage transition">
+            <h3 class="font-medium text-xs sm:text-sm text-livora-dark hover:text-livora-sage transition truncate">${item.name}</h3>
+          </a>
+          <div class="text-xs sm:text-sm font-bold text-livora-dark mt-1">$${item.price.toLocaleString()}.00</div>
+        </div>
+          <button onclick="addToCart('${item.name}', ${item.price}, '${item.img}', '${item.id}'); toggleWishlist('${item.name}', ${item.price}, '${item.img}', null, '${item.id}');" class="mt-3 w-full py-2 bg-livora-dark text-white hover:bg-livora-sage text-xs font-semibold rounded-lg transition flex items-center justify-center gap-1.5 shadow-sm">
+            <i class="fa-solid fa-bag-shopping text-[11px]"></i>
+            <span>Move to Bag</span>
+          </button>
+        </div>
+      `).join('');
+    }
+
+    function moveAllToCart() {
+      const list = getWishlist();
+      if (list.length === 0) {
+        showToast("Wishlist is empty!");
+        return;
+      }
+      list.forEach(item => {
+        addToCart(item.name, item.price, item.img, item.id);
+      });
+      saveWishlist([]);
+      renderWishlistPage();
+      showToast("All pieces moved to your Shopping Bag! ✨");
+    }
+
+    document.addEventListener('DOMContentLoaded', renderWishlistPage);
+  </script>
+</body>
+</html>

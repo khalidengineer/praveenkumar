@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>LIVORA — Haute Jewels & Bespoke Couture</title>
+  
+  <!-- Google Fonts: Cormorant Garamond, Playfair Display, Plus Jakarta Sans, Alex Brush -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome 6 Pro Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Tailwind CSS CDN with Custom Configurations -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'livora-dark': '#162E25',        // Deep forest emerald matching screenshot
+            'livora-sage': '#244A3C',        // Muted sage green from split banner
+            'livora-light-sage': '#386050',
+            'livora-bg': '#FAF8F5',          // Warm ivory/cream organic canvas
+            'livora-cream': '#EFE7DE',       // Warm almond/blush banner
+            'livora-gold': '#C5A880',        // Luxury gold accents
+            'livora-sale': '#DC2626',        // Vibrant sale red
+            'livora-border': '#EAE6DF'
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            display: ['"Playfair Display"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            script: ['"Alex Brush"', 'cursive']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- GSAP & ScrollTrigger CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Custom Design System Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body class="antialiased pb-20 md:pb-0">
+
+  <!-- ========================================== -->
+  <!-- 1. TOP ANNOUNCEMENT BAR (Identical to reference) -->
+  <!-- ========================================== -->
+  <div class="bg-livora-dark text-white text-[11px] md:text-xs py-2 px-4 font-medium tracking-wide">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="hidden md:block w-1/4"></div>
+      <div class="text-center w-full md:w-auto flex items-center justify-center gap-2">
+        <span class="text-amber-300">✨</span>
+        <span>Free Insured Worldwide Shipping on Orders Over $50</span>
+        <span class="hidden sm:inline text-livora-gold">|</span>
+        <span class="hidden sm:inline text-stone-300">Timeless Jewels. Radiant Couture.</span>
+      </div>
+      <div class="hidden md:flex justify-end items-center gap-5 w-1/4 text-stone-300 text-[11px]">
+        <a href="track-order.html" class="hover:text-white transition">Track Order</a>
+        <span class="text-stone-500">|</span>
+        <a href="help.html" class="hover:text-white transition">Concierge & Help</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 2. MAIN HEADER NAVIGATION -->
+  <!-- ========================================== -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-livora-border transition-all duration-300 shadow-sm" id="main-header">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
+      <div class="flex items-center justify-between gap-4">
+        
+        <!-- Mobile Menu Toggle + Brand Logo -->
+        <div class="flex items-center gap-3">
+          <button class="md:hidden text-livora-dark p-2 hover:bg-stone-100 rounded-lg transition" onclick="toggleMobileDrawer()" aria-label="Open Menu">
+            <i class="fa-solid fa-bars text-lg"></i>
+          </button>
+          
+          <a href="index.html" class="flex items-center gap-2 group">
+            <div class="w-8 h-8 rounded-lg bg-livora-dark flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform">
+              <i class="fa-regular fa-gem text-sm text-livora-gold"></i>
+            </div>
+            <div>
+              <span class="font-display font-bold text-xl md:text-2xl tracking-[0.15em] text-livora-dark block leading-none">LIVORA</span>
+              <span class="text-[8px] md:text-[9px] tracking-[0.25em] text-stone-500 uppercase block font-semibold mt-0.5">Haute Jewels & Couture</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Search Bar (Pill Shape with Green Button) -->
+        <div class="hidden md:flex flex-1 max-w-xl mx-6">
+          <div class="relative w-full">
+            <input 
+              type="text" 
+              placeholder="Search for solitaire rings, diamond chokers, evening gowns..."
+              class="w-full pl-4 pr-12 py-2.5 bg-stone-50 hover:bg-stone-100/80 focus:bg-white text-xs md:text-sm rounded-full border border-stone-200 focus:border-livora-dark focus:outline-none transition-all placeholder:text-stone-400"
+            />
+            <button class="absolute right-1 top-1 bottom-1 w-9 bg-livora-dark text-white rounded-full flex items-center justify-center hover:bg-livora-sage transition shadow-sm">
+              <i class="fa-solid fa-magnifying-glass text-xs"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right User Actions (Account, Wishlist, Cart) -->
+        <div class="flex items-center gap-4 sm:gap-6 text-livora-dark">
+          <!-- Account -->
+          <a href="account.html" class="hidden sm:flex flex-col items-center group cursor-pointer">
+            <i class="fa-regular fa-user text-base group-hover:text-livora-sage transition"></i>
+            <span class="text-[11px] font-medium text-stone-600 group-hover:text-livora-dark transition mt-0.5">Account</span>
+          </a>
+
+          <!-- Wishlist -->
+          <a href="wishlist.html" class="flex flex-col items-center relative group cursor-pointer">
+            <div class="relative">
+              <i class="fa-regular fa-heart text-base group-hover:text-red-600 transition"></i>
+              <span class="wishlist-counter-badge absolute -top-1.5 -right-2 bg-livora-dark text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">2</span>
+            </div>
+            <span class="hidden sm:inline text-[11px] font-medium text-stone-600 group-hover:text-livora-dark transition mt-0.5">Wishlist</span>
+          </a>
+
+          <!-- Cart -->
+          <button onclick="toggleCartDrawer()" class="flex items-center gap-2 bg-stone-100 hover:bg-stone-200/80 px-3 py-1.5 rounded-full transition group">
+            <div class="relative">
+              <i class="fa-solid fa-bag-shopping text-base text-livora-dark group-hover:scale-110 transition-transform"></i>
+              <span class="cart-counter-badge absolute -top-2 -right-2.5 bg-livora-dark text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">3</span>
+            </div>
+            <span class="cart-header-total text-xs font-semibold text-livora-dark hidden sm:inline">$1,647</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 3. SUB-NAVIGATION CATEGORY BAR (Icons + Text) -->
+    <!-- ========================================== -->
+    <div class="border-t border-livora-border/60 bg-livora-bg overflow-x-auto no-scrollbar">
+      <div class="max-w-7xl mx-auto px-4 flex items-center justify-between gap-6 py-2.5 text-[11.5px] font-medium text-stone-700 whitespace-nowrap min-w-max">
+        <a href="fine-jewelry.html" class="flex items-center gap-1.5 hover:text-livora-dark transition hover:font-semibold">
+          <i class="fa-solid fa-gem text-stone-500 text-xs"></i> Fine Jewelry
+        </a>
+        <a href="chokers.html" class="flex items-center gap-1.5 hover:text-livora-dark transition hover:font-semibold">
+          <i class="fa-solid fa-necklace text-stone-500 text-xs"></i> Necklaces & Chokers
+        </a>
+        <a href="rings.html" class="flex items-center gap-1.5 hover:text-livora-dark transition hover:font-semibold">
+          <i class="fa-solid fa-ring text-stone-500 text-xs"></i> Solitaire Rings
+        </a>
+        <a href="gowns.html" class="flex items-center gap-1.5 hover:text-livora-dark transition hover:font-semibold">
+          <i class="fa-solid fa-person-dress text-stone-500 text-xs"></i> Evening Gowns
+        </a>
+        <a href="bridal.html" class="flex items-center gap-1.5 hover:text-livora-dark transition hover:font-semibold">
+          <i class="fa-solid fa-crown text-stone-500 text-xs"></i> Bridal Lehengas
+        </a>
+        <a href="earrings.html" class="flex items-center gap-1.5 hover:text-livora-dark transition hover:font-semibold">
+          <i class="fa-solid fa-sparkles text-stone-500 text-xs"></i> Earrings & Drops
+        </a>
+        <a href="fine-jewelry.html#bangles" class="flex items-center gap-1.5 hover:text-livora-dark transition hover:font-semibold">
+          <i class="fa-solid fa-circle-notch text-stone-500 text-xs"></i> Gold Bangles
+        </a>
+        <a href="gowns.html#clutches" class="flex items-center gap-1.5 hover:text-livora-dark transition hover:font-semibold">
+          <i class="fa-solid fa-bag-shopping text-stone-500 text-xs"></i> Luxury Clutches
+        </a>
+        <a href="bridal.html#polki" class="flex items-center gap-1.5 hover:text-livora-dark transition hover:font-semibold">
+          <i class="fa-solid fa-award text-stone-500 text-xs"></i> Royal Heritage
+        </a>
+        <a href="sale.html" class="flex items-center gap-1.5 text-livora-sale font-bold hover:opacity-80 transition bg-red-50 px-2.5 py-0.5 rounded-full">
+          <i class="fa-solid fa-tags text-xs"></i> Special Sale
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- 4. HERO SECTION (Auto-sliding Carousel with 20% Reduced Height) -->
+  <!-- ========================================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-6">
+    <div id="hero-slider-container" class="relative h-[420px] sm:h-[380px] lg:h-[415px] bg-[#EBE5DC] rounded-2xl overflow-hidden shadow-sm border border-stone-200 group">
+      
+      <!-- SLIDE 1: Haute Couture Diamond Solitaire & Jewelry -->
+      <div class="hero-slide is-active lg:grid lg:grid-cols-12 h-full items-stretch transition-all duration-700" data-slide="0">
+        <!-- Visual -->
+        <div class="absolute inset-0 lg:relative lg:inset-auto lg:col-span-7 lg:order-2 overflow-hidden">
+          <img 
+            src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=1600&auto=format&fit=crop" 
+            alt="Haute Couture Diamond Solitaire & Emerald Jewelry" 
+            class="w-full h-full object-cover object-right sm:object-center hero-image"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent lg:bg-gradient-to-r lg:from-[#EBE5DC] lg:via-transparent lg:to-transparent"></div>
+          <div class="absolute top-5 right-7 text-right hidden sm:block">
+            <span class="font-script text-2xl sm:text-3xl text-stone-800 drop-shadow-sm block transform -rotate-6">
+              A more radiant<br />tomorrow
+            </span>
+          </div>
+        </div>
+
+        <!-- Typography & Action -->
+        <div class="relative z-10 lg:col-span-5 lg:order-1 p-5 sm:p-8 lg:p-10 flex flex-col justify-end lg:justify-center hero-content h-full max-w-lg">
+          <div class="bg-[#EBE5DC]/92 lg:bg-transparent p-4 sm:p-5 lg:p-0 rounded-2xl backdrop-blur-md lg:backdrop-blur-none border border-white/40 lg:border-none shadow-sm lg:shadow-none">
+            <span class="text-[9px] md:text-xs uppercase tracking-[0.25em] font-semibold text-livora-sage mb-1.5 block">
+              TIMELESS COUTURE & HIGH JEWELRY
+            </span>
+            <h1 class="font-serif text-2xl sm:text-4xl lg:text-[42px] leading-[1.15] text-livora-dark font-normal mb-2 tracking-tight">
+              Radiant Jewels,<br />
+              <span class="italic font-light">Timeless</span> Grace
+            </h1>
+            <p class="text-xs sm:text-sm text-stone-700 leading-relaxed max-w-md mb-4 font-light line-clamp-2 sm:line-clamp-none">
+              Handcrafted certified diamond jewelry and bespoke couture gowns tailored for life's most celebrated occasions.
+            </p>
+            <div>
+              <a href="fine-jewelry.html" class="inline-flex items-center gap-2 bg-livora-dark text-white px-5 py-2 sm:px-6 sm:py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase hover:bg-livora-sage transition duration-300 shadow-md group">
+                <span>Shop the Collection</span>
+                <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 2: Haute Bridal Wedding Gown (Bride in White Veil) -->
+      <div class="hero-slide lg:grid lg:grid-cols-12 h-full items-stretch transition-all duration-700" data-slide="1">
+        <!-- Visual -->
+        <div class="absolute inset-0 lg:relative lg:inset-auto lg:col-span-7 lg:order-2 overflow-hidden">
+          <img 
+            src="https://images.unsplash.com/photo-1594552072238-b8a33785b261?q=80&w=1600&auto=format&fit=crop" 
+            alt="Bride in Haute White Wedding Gown with Veil" 
+            class="w-full h-full object-cover object-right sm:object-center hero-image"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent lg:bg-gradient-to-r lg:from-[#EBE5DC] lg:via-transparent lg:to-transparent"></div>
+          <div class="absolute top-5 right-7 text-right hidden sm:block">
+            <span class="font-script text-2xl sm:text-3xl text-stone-800 drop-shadow-sm block transform -rotate-6">
+              The bride of<br />your dreams
+            </span>
+          </div>
+        </div>
+
+        <!-- Typography & Action -->
+        <div class="relative z-10 lg:col-span-5 lg:order-1 p-5 sm:p-8 lg:p-10 flex flex-col justify-end lg:justify-center hero-content h-full max-w-lg">
+          <div class="bg-[#EBE5DC]/92 lg:bg-transparent p-4 sm:p-5 lg:p-0 rounded-2xl backdrop-blur-md lg:backdrop-blur-none border border-white/40 lg:border-none shadow-sm lg:shadow-none">
+            <span class="text-[9px] md:text-xs uppercase tracking-[0.25em] font-semibold text-livora-sage mb-1.5 block">
+              ROYAL WEDDING ATELIER 2026
+            </span>
+            <h1 class="font-serif text-2xl sm:text-4xl lg:text-[42px] leading-[1.15] text-livora-dark font-normal mb-2 tracking-tight">
+              Bespoke Bridal Gowns,<br />
+              <span class="italic font-light">Ethereal</span> Romance
+            </h1>
+            <p class="text-xs sm:text-sm text-stone-700 leading-relaxed max-w-md mb-4 font-light line-clamp-2 sm:line-clamp-none">
+              Exquisite hand-stitched French lace wedding gowns, sculpted sweetheart silhouettes, and cathedral veils crafted for your fairy-tale aisle.
+            </p>
+            <div>
+              <a href="bridal.html" class="inline-flex items-center gap-2 bg-livora-dark text-white px-5 py-2 sm:px-6 sm:py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase hover:bg-livora-sage transition duration-300 shadow-md group">
+                <span>Explore Wedding Gowns</span>
+                <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 3: Red Carpet Evening Gala Gown (Model in Embroidered Gown) -->
+      <div class="hero-slide lg:grid lg:grid-cols-12 h-full items-stretch transition-all duration-700" data-slide="2">
+        <!-- Visual -->
+        <div class="absolute inset-0 lg:relative lg:inset-auto lg:col-span-7 lg:order-2 overflow-hidden">
+          <img 
+            src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=1600&auto=format&fit=crop" 
+            alt="Girl Model in Haute Couture Embroidered Evening Gala Gown" 
+            class="w-full h-full object-cover object-right sm:object-center hero-image"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent lg:bg-gradient-to-r lg:from-[#EBE5DC] lg:via-transparent lg:to-transparent"></div>
+          <div class="absolute top-5 right-7 text-right hidden sm:block">
+            <span class="font-script text-2xl sm:text-3xl text-stone-800 drop-shadow-sm block transform -rotate-6">
+              Elegance in<br />every silhouette
+            </span>
+          </div>
+        </div>
+
+        <!-- Typography & Action -->
+        <div class="relative z-10 lg:col-span-5 lg:order-1 p-5 sm:p-8 lg:p-10 flex flex-col justify-end lg:justify-center hero-content h-full max-w-lg">
+          <div class="bg-[#EBE5DC]/92 lg:bg-transparent p-4 sm:p-5 lg:p-0 rounded-2xl backdrop-blur-md lg:backdrop-blur-none border border-white/40 lg:border-none shadow-sm lg:shadow-none">
+            <span class="text-[9px] md:text-xs uppercase tracking-[0.25em] font-semibold text-livora-sage mb-1.5 block">
+              RED CARPET EVENING COUTURE
+            </span>
+            <h1 class="font-serif text-2xl sm:text-4xl lg:text-[42px] leading-[1.15] text-livora-dark font-normal mb-2 tracking-tight">
+              Haute Evening Gowns,<br />
+              <span class="italic font-light">Infinite</span> Grace
+            </h1>
+            <p class="text-xs sm:text-sm text-stone-700 leading-relaxed max-w-md mb-4 font-light line-clamp-2 sm:line-clamp-none">
+              Sculpted Italian silk organza, crystal hand-embroideries, and dramatic flowing trains tailored for unforgettable galas and receptions.
+            </p>
+            <div>
+              <a href="gowns.html" class="inline-flex items-center gap-2 bg-livora-dark text-white px-5 py-2 sm:px-6 sm:py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase hover:bg-livora-sage transition duration-300 shadow-md group">
+                <span>Discover Evening Gowns</span>
+                <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Arrow Controls (Desktop Hover) -->
+      <button onclick="prevHeroSlide()" class="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/80 hover:bg-white text-livora-dark items-center justify-center shadow-md transition opacity-0 group-hover:opacity-100" aria-label="Previous Slide">
+        <i class="fa-solid fa-chevron-left text-xs"></i>
+      </button>
+      <button onclick="nextHeroSlide()" class="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/80 hover:bg-white text-livora-dark items-center justify-center shadow-md transition opacity-0 group-hover:opacity-100" aria-label="Next Slide">
+        <i class="fa-solid fa-chevron-right text-xs"></i>
+      </button>
+
+      <!-- Carousel Pagination Dots (Bottom Right) -->
+      <div class="absolute bottom-4 right-6 flex items-center gap-2 z-20" id="hero-dots">
+        <button onclick="goToHeroSlide(0)" class="hero-dot w-6 h-2 rounded-full bg-livora-dark shadow-md transition-all" aria-label="Slide 1"></button>
+        <button onclick="goToHeroSlide(1)" class="hero-dot w-2 h-2 rounded-full bg-stone-400 hover:bg-livora-dark transition-all" aria-label="Slide 2"></button>
+        <button onclick="goToHeroSlide(2)" class="hero-dot w-2 h-2 rounded-full bg-stone-400 hover:bg-livora-dark transition-all" aria-label="Slide 3"></button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 5. CIRCULAR STORY CATEGORY HIGHLIGHTS -->
+  <!-- ========================================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div class="flex items-center justify-between gap-4 sm:gap-6 overflow-x-auto no-scrollbar py-2 text-center">
+      
+      <!-- Circle 1 -->
+      <a href="chokers.html" class="flex flex-col items-center flex-shrink-0 group cursor-pointer w-20 sm:w-24">
+        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden p-0.5 border-2 border-stone-200 group-hover:border-livora-dark transition-all duration-300 shadow-sm">
+          <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=300&auto=format&fit=crop" alt="Solitaire Chokers" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition duration-300" />
+        </div>
+        <span class="text-[11px] sm:text-xs font-medium text-stone-800 mt-2 group-hover:text-livora-dark transition">Solitaire Chokers</span>
+      </a>
+
+      <!-- Circle 2 -->
+      <a href="gowns.html" class="flex flex-col items-center flex-shrink-0 group cursor-pointer w-20 sm:w-24">
+        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden p-0.5 border-2 border-stone-200 group-hover:border-livora-dark transition-all duration-300 shadow-sm">
+          <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?q=80&w=300&auto=format&fit=crop" alt="Silk Gowns" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition duration-300" />
+        </div>
+        <span class="text-[11px] sm:text-xs font-medium text-stone-800 mt-2 group-hover:text-livora-dark transition">Silk Gowns</span>
+      </a>
+
+      <!-- Circle 3 -->
+      <a href="bridal.html" class="flex flex-col items-center flex-shrink-0 group cursor-pointer w-20 sm:w-24">
+        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden p-0.5 border-2 border-stone-200 group-hover:border-livora-dark transition-all duration-300 shadow-sm">
+          <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=300&auto=format&fit=crop" alt="Bridal Couture" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition duration-300" />
+        </div>
+        <span class="text-[11px] sm:text-xs font-medium text-stone-800 mt-2 group-hover:text-livora-dark transition">Bridal Couture</span>
+      </a>
+
+      <!-- Circle 4 -->
+      <a href="rings.html" class="flex flex-col items-center flex-shrink-0 group cursor-pointer w-20 sm:w-24">
+        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden p-0.5 border-2 border-stone-200 group-hover:border-livora-dark transition-all duration-300 shadow-sm">
+          <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=300&auto=format&fit=crop" alt="Diamond Rings" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition duration-300" />
+        </div>
+        <span class="text-[11px] sm:text-xs font-medium text-stone-800 mt-2 group-hover:text-livora-dark transition">Diamond Rings</span>
+      </a>
+
+      <!-- Circle 5 -->
+      <a href="earrings.html" class="flex flex-col items-center flex-shrink-0 group cursor-pointer w-20 sm:w-24">
+        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden p-0.5 border-2 border-stone-200 group-hover:border-livora-dark transition-all duration-300 shadow-sm">
+          <img src="https://images.unsplash.com/photo-1630019852942-f89202989a59?q=80&w=300&auto=format&fit=crop" alt="Statement Drops" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition duration-300" />
+        </div>
+        <span class="text-[11px] sm:text-xs font-medium text-stone-800 mt-2 group-hover:text-livora-dark transition">Statement Drops</span>
+      </a>
+
+      <!-- Circle 6 -->
+      <a href="gowns.html#cocktail" class="flex flex-col items-center flex-shrink-0 group cursor-pointer w-20 sm:w-24">
+        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden p-0.5 border-2 border-stone-200 group-hover:border-livora-dark transition-all duration-300 shadow-sm">
+          <img src="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=300&auto=format&fit=crop" alt="Cocktail Dresses" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition duration-300" />
+        </div>
+        <span class="text-[11px] sm:text-xs font-medium text-stone-800 mt-2 group-hover:text-livora-dark transition">Cocktail Dresses</span>
+      </a>
+
+      <!-- Circle 7 -->
+      <a href="fine-jewelry.html#bangles" class="flex flex-col items-center flex-shrink-0 group cursor-pointer w-20 sm:w-24">
+        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden p-0.5 border-2 border-stone-200 group-hover:border-livora-dark transition-all duration-300 shadow-sm">
+          <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=300&auto=format&fit=crop" alt="Gold Bangles" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition duration-300" />
+        </div>
+        <span class="text-[11px] sm:text-xs font-medium text-stone-800 mt-2 group-hover:text-livora-dark transition">Gold Bangles</span>
+      </a>
+
+      <!-- Circle 8 -->
+      <a href="gowns.html#clutches" class="flex flex-col items-center flex-shrink-0 group cursor-pointer w-20 sm:w-24">
+        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden p-0.5 border-2 border-stone-200 group-hover:border-livora-dark transition-all duration-300 shadow-sm">
+          <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=300&auto=format&fit=crop" alt="Luxury Clutches" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition duration-300" />
+        </div>
+        <span class="text-[11px] sm:text-xs font-medium text-stone-800 mt-2 group-hover:text-livora-dark transition">Luxury Clutches</span>
+      </a>
+
+      <!-- Circle 9 -->
+      <a href="bridal.html#polki" class="flex flex-col items-center flex-shrink-0 group cursor-pointer w-20 sm:w-24">
+        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden p-0.5 border-2 border-stone-200 group-hover:border-livora-dark transition-all duration-300 shadow-sm">
+          <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=300&auto=format&fit=crop" alt="Royal Kundan" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition duration-300" />
+        </div>
+        <span class="text-[11px] sm:text-xs font-medium text-stone-800 mt-2 group-hover:text-livora-dark transition">Royal Kundan</span>
+      </a>
+
+      <!-- Circle 10 -->
+      <a href="sale.html" class="flex flex-col items-center flex-shrink-0 group cursor-pointer w-20 sm:w-24">
+        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden p-0.5 border-2 border-red-300 group-hover:border-livora-sale transition-all duration-300 shadow-sm">
+          <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=300&auto=format&fit=crop" alt="Sale Highlights" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition duration-300" />
+        </div>
+        <span class="text-[11px] sm:text-xs font-bold text-livora-sale mt-2 group-hover:opacity-80 transition">Sale Highlights</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 6. "NEW ARRIVALS" 5-COLUMN PRODUCT GRID -->
+  <!-- ========================================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8" id="new-arrivals">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="font-serif text-2xl sm:text-3xl text-livora-dark font-medium">New Arrivals</h2>
+      <a href="fine-jewelry.html" class="text-xs font-semibold text-stone-700 hover:text-livora-dark flex items-center gap-1 group">
+        <span>View All</span>
+        <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-5">
+      
+      <!-- Product 1 -->
+      <div class="bg-white rounded-xl overflow-hidden border border-stone-100 luxury-card p-3 relative flex flex-col justify-between">
+        <div class="relative rounded-lg overflow-hidden bg-stone-100 aspect-square mb-3">
+          <span class="absolute top-2 left-2 z-10 bg-livora-dark text-white text-[10px] font-semibold px-2 py-0.5 rounded">New</span>
+          <button onclick="toggleWishlist('Avela 18k Solitaire Choker', 699, 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?q=80&w=400&auto=format&fit=crop', this)" class="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-white/90 text-stone-600 hover:text-red-500 flex items-center justify-center shadow-sm transition">
+            <i class="fa-regular fa-heart text-xs"></i>
+          </button>
+          <a href="product-detail.html?name=Avela%2018k%20Solitaire%20Choker&price=699&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1599643477877-530eb83abc8e%3Fq%3D80%26w%3D400%26auto%3Dformat%26fit%3Dcrop&cat=Fine%20Jewelry" class="block w-full h-full">
+            <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?q=80&w=400&auto=format&fit=crop" alt="Avela 18k Solitaire Choker" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+          </a>
+        </div>
+        <div>
+          <a href="product-detail.html?name=Avela%2018k%20Solitaire%20Choker&price=699&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1599643477877-530eb83abc8e%3Fq%3D80%26w%3D400%26auto%3Dformat%26fit%3Dcrop&cat=Fine%20Jewelry" class="hover:text-livora-sage transition">
+            <h3 class="font-medium text-xs sm:text-sm text-livora-dark hover:text-livora-sage transition truncate">Avela 18k Solitaire Choker</h3>
+          </a>
+          <div class="text-xs sm:text-sm font-bold text-livora-dark mt-1">$699</div>
+          <div class="flex items-center gap-1 mt-1 text-[11px] text-amber-500">
+            <div class="flex text-[10px]">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <span class="text-stone-400 text-[10px]">(124)</span>
+          </div>
+        </div>
+        <button onclick="addToCart('Avela 18k Solitaire Choker', 699, 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?q=80&w=400&auto=format&fit=crop')" class="mt-3 w-full py-1.5 bg-stone-100 hover:bg-livora-dark hover:text-white text-livora-dark text-xs font-semibold rounded-lg transition duration-200">
+          + Add to Cart
+        </button>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="bg-white rounded-xl overflow-hidden border border-stone-100 luxury-card p-3 relative flex flex-col justify-between">
+        <div class="relative rounded-lg overflow-hidden bg-stone-100 aspect-square mb-3">
+          <span class="absolute top-2 left-2 z-10 bg-livora-dark text-white text-[10px] font-semibold px-2 py-0.5 rounded">New</span>
+          <button onclick="toggleWishlist('Noor Silk Embroidered Gown', 549, 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=400&auto=format&fit=crop', this)" class="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-white/90 text-stone-600 hover:text-red-500 flex items-center justify-center shadow-sm transition">
+            <i class="fa-regular fa-heart text-xs"></i>
+          </button>
+          <a href="product-detail.html?name=Noor%20Silk%20Embroidered%20Gown&price=549&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1566174053879-31528523f8ae%3Fq%3D80%26w%3D400%26auto%3Dformat%26fit%3Dcrop&cat=Couture%20Gowns" class="block w-full h-full">
+            <img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=400&auto=format&fit=crop" alt="Noor Silk Embroidered Gown" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+          </a>
+        </div>
+        <div>
+          <a href="product-detail.html?name=Noor%20Silk%20Embroidered%20Gown&price=549&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1566174053879-31528523f8ae%3Fq%3D80%26w%3D400%26auto%3Dformat%26fit%3Dcrop&cat=Couture%20Gowns" class="hover:text-livora-sage transition">
+            <h3 class="font-medium text-xs sm:text-sm text-livora-dark hover:text-livora-sage transition truncate">Noor Silk Embroidered Gown</h3>
+          </a>
+          <div class="text-xs sm:text-sm font-bold text-livora-dark mt-1">$549</div>
+          <div class="flex items-center gap-1 mt-1 text-[11px] text-amber-500">
+            <div class="flex text-[10px]">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <span class="text-stone-400 text-[10px]">(98)</span>
+          </div>
+        </div>
+        <button onclick="addToCart('Noor Silk Embroidered Gown', 549, 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=400&auto=format&fit=crop')" class="mt-3 w-full py-1.5 bg-stone-100 hover:bg-livora-dark hover:text-white text-livora-dark text-xs font-semibold rounded-lg transition duration-200">
+          + Add to Cart
+        </button>
+      </div>
+
+      <!-- Product 3: Elysian French Lace Wedding Gown -->
+      <div class="bg-white rounded-xl overflow-hidden border border-stone-100 luxury-card p-3 relative flex flex-col justify-between">
+        <div class="relative rounded-lg overflow-hidden bg-stone-100 aspect-square mb-3">
+          <span class="absolute top-2 left-2 z-10 bg-livora-dark text-white text-[10px] font-semibold px-2 py-0.5 rounded">Bridal</span>
+          <button onclick="toggleWishlist('Elysian French Lace Wedding Gown', 1290, 'https://images.unsplash.com/photo-1546804784-896d0dca3805?q=80&w=400&auto=format&fit=crop', this)" class="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-white/90 text-stone-600 hover:text-red-500 flex items-center justify-center shadow-sm transition">
+            <i class="fa-regular fa-heart text-xs"></i>
+          </button>
+          <a href="product-detail.html?name=Elysian%20French%20Lace%20Wedding%20Gown&price=1290&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1546804784-896d0dca3805%3Fq%3D80%26w%3D400%26auto%3Dformat%26fit%3Dcrop&cat=Bridal%20Couture" class="block w-full h-full">
+            <img src="https://images.unsplash.com/photo-1546804784-896d0dca3805?q=80&w=400&auto=format&fit=crop" alt="Elysian French Lace Wedding Gown" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+          </a>
+        </div>
+        <div>
+          <a href="product-detail.html?name=Elysian%20French%20Lace%20Wedding%20Gown&price=1290&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1546804784-896d0dca3805%3Fq%3D80%26w%3D400%26auto%3Dformat%26fit%3Dcrop&cat=Bridal%20Couture" class="hover:text-livora-sage transition">
+            <h3 class="font-medium text-xs sm:text-sm text-livora-dark hover:text-livora-sage transition truncate">Elysian French Lace Wedding Gown</h3>
+          </a>
+          <div class="text-xs sm:text-sm font-bold text-livora-dark mt-1">$1,290</div>
+          <div class="flex items-center gap-1 mt-1 text-[11px] text-amber-500">
+            <div class="flex text-[10px]">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <span class="text-stone-400 text-[10px]">(76)</span>
+          </div>
+        </div>
+        <button onclick="addToCart('Elysian French Lace Wedding Gown', 1290, 'https://images.unsplash.com/photo-1546804784-896d0dca3805?q=80&w=400&auto=format&fit=crop')" class="mt-3 w-full py-1.5 bg-stone-100 hover:bg-livora-dark hover:text-white text-livora-dark text-xs font-semibold rounded-lg transition duration-200">
+          + Add to Cart
+        </button>
+      </div>
+
+      <!-- Product 4: Royal Crimson Zardozi Bridal Lehenga -->
+      <div class="bg-white rounded-xl overflow-hidden border border-stone-100 luxury-card p-3 relative flex flex-col justify-between">
+        <div class="relative rounded-lg overflow-hidden bg-stone-100 aspect-square mb-3">
+          <span class="absolute top-2 left-2 z-10 bg-livora-dark text-white text-[10px] font-semibold px-2 py-0.5 rounded">Bridal</span>
+          <button onclick="toggleWishlist('Royal Crimson Zardozi Bridal Lehenga', 1450, 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=400&auto=format&fit=crop', this)" class="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-white/90 text-stone-600 hover:text-red-500 flex items-center justify-center shadow-sm transition">
+            <i class="fa-regular fa-heart text-xs"></i>
+          </button>
+          <a href="product-detail.html?name=Royal%20Crimson%20Zardozi%20Bridal%20Lehenga&price=1450&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1610030469983-98e550d6193c%3Fq%3D80%26w%3D400%26auto%3Dformat%26fit%3Dcrop&cat=Bridal%20Couture" class="block w-full h-full">
+            <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=400&auto=format&fit=crop" alt="Royal Crimson Zardozi Bridal Lehenga" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+          </a>
+        </div>
+        <div>
+          <a href="product-detail.html?name=Royal%20Crimson%20Zardozi%20Bridal%20Lehenga&price=1450&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1610030469983-98e550d6193c%3Fq%3D80%26w%3D400%26auto%3Dformat%26fit%3Dcrop&cat=Bridal%20Couture" class="hover:text-livora-sage transition">
+            <h3 class="font-medium text-xs sm:text-sm text-livora-dark hover:text-livora-sage transition truncate">Royal Crimson Bridal Lehenga</h3>
+          </a>
+          <div class="text-xs sm:text-sm font-bold text-livora-dark mt-1">$1,450</div>
+          <div class="flex items-center gap-1 mt-1 text-[11px] text-amber-500">
+            <div class="flex text-[10px]">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <span class="text-stone-400 text-[10px]">(213)</span>
+          </div>
+        </div>
+        <button onclick="addToCart('Royal Crimson Zardozi Bridal Lehenga', 1450, 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=400&auto=format&fit=crop')" class="mt-3 w-full py-1.5 bg-stone-100 hover:bg-livora-dark hover:text-white text-livora-dark text-xs font-semibold rounded-lg transition duration-200">
+          + Add to Cart
+        </button>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="bg-white rounded-xl overflow-hidden border border-stone-100 luxury-card p-3 relative flex flex-col justify-between">
+        <div class="relative rounded-lg overflow-hidden bg-stone-100 aspect-square mb-3">
+          <span class="absolute top-2 left-2 z-10 bg-livora-dark text-white text-[10px] font-semibold px-2 py-0.5 rounded">New</span>
+          <button onclick="toggleWishlist('Serene Organza Midi Dress', 45, 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=400&auto=format&fit=crop', this)" class="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-white/90 text-stone-600 hover:text-red-500 flex items-center justify-center shadow-sm transition">
+            <i class="fa-regular fa-heart text-xs"></i>
+          </button>
+          <a href="product-detail.html?name=Serene%20Organza%20Midi%20Dress&price=45&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1572804013309-59a88b7e92f1%3Fq%3D80%26w%3D400%26auto%3Dformat%26fit%3Dcrop&cat=Couture%20Gowns" class="block w-full h-full">
+            <img src="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=400&auto=format&fit=crop" alt="Serene Organza Midi Dress" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+          </a>
+        </div>
+        <div>
+          <a href="product-detail.html?name=Serene%20Organza%20Midi%20Dress&price=45&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1572804013309-59a88b7e92f1%3Fq%3D80%26w%3D400%26auto%3Dformat%26fit%3Dcrop&cat=Couture%20Gowns" class="hover:text-livora-sage transition">
+            <h3 class="font-medium text-xs sm:text-sm text-livora-dark hover:text-livora-sage transition truncate">Serene Organza Midi Dress</h3>
+          </a>
+          <div class="text-xs sm:text-sm font-bold text-livora-dark mt-1">$45</div>
+          <div class="flex items-center gap-1 mt-1 text-[11px] text-amber-500">
+            <div class="flex text-[10px]">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <span class="text-stone-400 text-[10px]">(164)</span>
+          </div>
+        </div>
+        <button onclick="addToCart('Serene Organza Midi Dress', 45, 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=400&auto=format&fit=crop')" class="mt-3 w-full py-1.5 bg-stone-100 hover:bg-livora-dark hover:text-white text-livora-dark text-xs font-semibold rounded-lg transition duration-200">
+          + Add to Cart
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 7. DUAL SPLIT PROMOTIONAL BANNERS (Exact Match) -->
+  <!-- ========================================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      
+      <!-- Left Banner: Sage Green Aesthetic -->
+      <div class="relative bg-livora-sage text-white rounded-2xl overflow-hidden p-8 sm:p-10 flex flex-col justify-between min-h-[300px]">
+        <div class="z-10 max-w-xs">
+          <h3 class="font-serif text-2xl sm:text-3xl font-medium leading-snug mb-2">
+            Make Every Moment Special
+          </h3>
+          <p class="text-xs sm:text-sm text-stone-200 mb-6">
+            Up to 40% Off Handcrafted Heritage Polki & Diamond Jewelry
+          </p>
+          <a href="chokers.html" class="inline-flex items-center gap-2 bg-livora-bg text-livora-dark px-5 py-2.5 rounded-full text-xs font-semibold hover:bg-white transition group shadow-sm">
+            <span>Shop Jewelry</span>
+            <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+          </a>
+        </div>
+        <div class="absolute right-0 bottom-0 top-0 w-1/2 overflow-hidden pointer-events-none">
+          <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=600&auto=format&fit=crop" alt="Heritage Polki Jewelry" class="w-full h-full object-cover object-center opacity-85 transform hover:scale-105 transition duration-700" />
+          <div class="absolute inset-0 bg-gradient-to-r from-livora-sage via-livora-sage/40 to-transparent"></div>
+        </div>
+      </div>
+
+      <!-- Right Banner: Warm Almond Cream Aesthetic -->
+      <div class="relative bg-livora-cream text-livora-dark rounded-2xl overflow-hidden p-8 sm:p-10 flex flex-col justify-between min-h-[300px] border border-stone-200">
+        <div class="z-10 max-w-xs">
+          <h3 class="font-serif text-2xl sm:text-3xl font-medium leading-snug mb-2">
+            Comfort & Grace Lives Here
+          </h3>
+          <p class="text-xs sm:text-sm text-stone-700 mb-6">
+            Bespoke Silk Gowns & Cocktail Collection<br />
+            <span class="font-semibold text-livora-dark">Up to 30% Off</span>
+          </p>
+          <a href="gowns.html" class="inline-flex items-center gap-2 bg-livora-dark text-white px-5 py-2.5 rounded-full text-xs font-semibold hover:bg-livora-sage transition group shadow-sm">
+            <span>Shop Gowns</span>
+            <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+          </a>
+        </div>
+        <div class="absolute right-0 bottom-0 top-0 w-1/2 overflow-hidden pointer-events-none">
+          <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?q=80&w=600&auto=format&fit=crop" alt="Silk Dress Collection" class="w-full h-full object-cover object-center opacity-90 transform hover:scale-105 transition duration-700" />
+          <div class="absolute inset-0 bg-gradient-to-r from-livora-cream via-livora-cream/40 to-transparent"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 8. "BEST SELLERS" + "CURATED COLLECTIONS" -->
+  <!-- ========================================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+      
+      <!-- Left: Best Sellers (6 Cards) -->
+      <div class="lg:col-span-7 flex flex-col justify-between h-full">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="font-serif text-2xl sm:text-3xl text-livora-dark font-medium">Best Sellers</h2>
+          <a href="fine-jewelry.html" class="text-xs font-semibold text-stone-700 hover:text-livora-dark flex items-center gap-1 group">
+            <span>View All</span>
+            <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 sm:grid-rows-2 gap-3.5 sm:gap-4 flex-1">
+          
+          <!-- Best Seller 1: Sel Handcrafted Velvet Evening Gown -->
+          <div class="bg-white rounded-xl border border-stone-100 luxury-card p-3 relative flex flex-col justify-between h-full">
+            <div class="relative rounded-lg overflow-hidden bg-stone-100 aspect-square mb-2.5">
+              <span class="absolute top-2 left-2 z-10 bg-livora-dark text-white text-[9px] font-semibold px-2 py-0.5 rounded">Bestseller</span>
+              <button onclick="toggleWishlist('Sel Handcrafted Velvet Evening Gown', 349, 'https://images.unsplash.com/photo-1518895949257-7621c3c786d7?q=80&w=350&auto=format&fit=crop', this)" class="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-white/90 text-stone-600 hover:text-red-500 flex items-center justify-center shadow-sm">
+                <i class="fa-regular fa-heart text-xs"></i>
+              </button>
+              <a href="product-detail.html?name=Sel%20Handcrafted%20Velvet%20Evening%20Gown&price=349&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1518895949257-7621c3c786d7%3Fq%3D80%26w%3D350%26auto%3Dformat%26fit%3Dcrop&cat=Couture%20Gowns" class="block w-full h-full">
+                <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?q=80&w=350&auto=format&fit=crop" alt="Sel Handcrafted Velvet Evening Gown" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+              </a>
+            </div>
+            <div>
+              <a href="product-detail.html?name=Sel%20Handcrafted%20Velvet%20Evening%20Gown&price=349&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1518895949257-7621c3c786d7%3Fq%3D80%26w%3D350%26auto%3Dformat%26fit%3Dcrop&cat=Couture%20Gowns" class="hover:text-livora-sage transition">
+                <h3 class="font-medium text-xs text-livora-dark hover:text-livora-sage transition truncate">Sel Velvet Evening Gown</h3>
+              </a>
+              <div class="text-xs font-bold text-livora-dark mt-0.5">$349</div>
+              <div class="flex items-center gap-1 text-[10px] text-amber-500 mt-1">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <span class="text-stone-400">(287)</span>
+              </div>
+            </div>
+            <button onclick="addToCart('Sel Handcrafted Velvet Evening Gown', 349, 'https://images.unsplash.com/photo-1518895949257-7621c3c786d7?q=80&w=350&auto=format&fit=crop')" class="mt-2.5 w-full py-1 bg-stone-50 hover:bg-livora-dark hover:text-white text-livora-dark text-[11px] font-semibold rounded transition">
+              Add to Cart
+            </button>
+          </div>
+
+          <!-- Best Seller 2: Mira Pastel Floral Royal Bridal Lehenga -->
+          <div class="bg-white rounded-xl border border-stone-100 luxury-card p-3 relative flex flex-col justify-between h-full">
+            <div class="relative rounded-lg overflow-hidden bg-stone-100 aspect-square mb-2.5">
+              <span class="absolute top-2 left-2 z-10 bg-livora-dark text-white text-[9px] font-semibold px-2 py-0.5 rounded">Bridal</span>
+              <button onclick="toggleWishlist('Mira Pastel Royal Bridal Lehenga', 990, 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=350&auto=format&fit=crop', this)" class="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-white/90 text-stone-600 hover:text-red-500 flex items-center justify-center shadow-sm">
+                <i class="fa-regular fa-heart text-xs"></i>
+              </button>
+              <a href="product-detail.html?name=Mira%20Pastel%20Royal%20Bridal%20Lehenga&price=990&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1583391733956-3750e0ff4e8b%3Fq%3D80%26w%3D350%26auto%3Dformat%26fit%3Dcrop&cat=Luxury%20Bridal" class="block w-full h-full">
+                <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=350&auto=format&fit=crop" alt="Mira Pastel Royal Bridal Lehenga" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+              </a>
+            </div>
+            <div>
+              <a href="product-detail.html?name=Mira%20Pastel%20Royal%20Bridal%20Lehenga&price=990&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1583391733956-3750e0ff4e8b%3Fq%3D80%26w%3D350%26auto%3Dformat%26fit%3Dcrop&cat=Luxury%20Bridal" class="hover:text-livora-sage transition">
+                <h3 class="font-medium text-xs text-livora-dark hover:text-livora-sage transition truncate">Mira Pastel Bridal Lehenga</h3>
+              </a>
+              <div class="text-xs font-bold text-livora-dark mt-0.5">$990</div>
+              <div class="flex items-center gap-1 text-[10px] text-amber-500 mt-1">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <span class="text-stone-400">(188)</span>
+              </div>
+            </div>
+            <button onclick="addToCart('Mira Pastel Royal Bridal Lehenga', 990, 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=350&auto=format&fit=crop')" class="mt-2.5 w-full py-1 bg-stone-50 hover:bg-livora-dark hover:text-white text-livora-dark text-[11px] font-semibold rounded transition">
+              Add to Cart
+            </button>
+          </div>
+
+          <!-- Best Seller 3: Valerie Ivory Tulle Bridal Wedding Gown -->
+          <div class="bg-white rounded-xl border border-stone-100 luxury-card p-3 relative flex flex-col justify-between h-full">
+            <div class="relative rounded-lg overflow-hidden bg-stone-100 aspect-square mb-2.5">
+              <span class="absolute top-2 left-2 z-10 bg-livora-dark text-white text-[9px] font-semibold px-2 py-0.5 rounded">Bridal</span>
+              <button onclick="toggleWishlist('Valerie Ivory Tulle Bridal Wedding Gown', 1150, 'https://images.unsplash.com/photo-1594552072238-b8a33785b261?q=80&w=350&auto=format&fit=crop', this)" class="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-white/90 text-stone-600 hover:text-red-500 flex items-center justify-center shadow-sm">
+                <i class="fa-regular fa-heart text-xs"></i>
+              </button>
+              <a href="product-detail.html?name=Valerie%20Ivory%20Tulle%20Bridal%20Wedding%20Gown&price=1150&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1594552072238-b8a33785b261%3Fq%3D80%26w%3D350%26auto%3Dformat%26fit%3Dcrop&cat=Bridal%20Couture" class="block w-full h-full">
+                <img src="https://images.unsplash.com/photo-1594552072238-b8a33785b261?q=80&w=350&auto=format&fit=crop" alt="Valerie Ivory Tulle Bridal Wedding Gown" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+              </a>
+            </div>
+            <div>
+              <a href="product-detail.html?name=Valerie%20Ivory%20Tulle%20Bridal%20Wedding%20Gown&price=1150&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1594552072238-b8a33785b261%3Fq%3D80%26w%3D350%26auto%3Dformat%26fit%3Dcrop&cat=Bridal%20Couture" class="hover:text-livora-sage transition">
+                <h3 class="font-medium text-xs text-livora-dark hover:text-livora-sage transition truncate">Valerie Ivory Bridal Gown</h3>
+              </a>
+              <div class="text-xs font-bold text-livora-dark mt-0.5">$1,150</div>
+              <div class="flex items-center gap-1 text-[10px] text-amber-500 mt-1">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <span class="text-stone-400">(312)</span>
+              </div>
+            </div>
+            <button onclick="addToCart('Valerie Ivory Tulle Bridal Wedding Gown', 1150, 'https://images.unsplash.com/photo-1594552072238-b8a33785b261?q=80&w=350&auto=format&fit=crop')" class="mt-2.5 w-full py-1 bg-stone-50 hover:bg-livora-dark hover:text-white text-livora-dark text-[11px] font-semibold rounded transition">
+              Add to Cart
+            </button>
+          </div>
+
+          <!-- Best Seller 4: Nova Accent 18k Pearl Choker -->
+          <div class="bg-white rounded-xl border border-stone-100 luxury-card p-3 relative flex flex-col justify-between h-full">
+            <div class="relative rounded-lg overflow-hidden bg-stone-100 aspect-square mb-2.5">
+              <button onclick="toggleWishlist('Nova Accent Pearl Choker', 299, 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=350&auto=format&fit=crop', this)" class="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-white/90 text-stone-600 hover:text-red-500 flex items-center justify-center shadow-sm">
+                <i class="fa-regular fa-heart text-xs"></i>
+              </button>
+              <a href="product-detail.html?name=Nova%20Accent%20Pearl%20Choker&price=299&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1599643478518-a784e5dc4c8f%3Fq%3D80%26w%3D350%26auto%3Dformat%26fit%3Dcrop&cat=Fine%20Jewelry" class="block w-full h-full">
+                <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=350&auto=format&fit=crop" alt="Nova Accent Pearl Choker" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+              </a>
+            </div>
+            <div>
+              <a href="product-detail.html?name=Nova%20Accent%20Pearl%20Choker&price=299&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1599643478518-a784e5dc4c8f%3Fq%3D80%26w%3D350%26auto%3Dformat%26fit%3Dcrop&cat=Fine%20Jewelry" class="hover:text-livora-sage transition">
+                <h3 class="font-medium text-xs text-livora-dark hover:text-livora-sage transition truncate">Nova Accent Pearl Choker</h3>
+              </a>
+              <div class="text-xs font-bold text-livora-dark mt-0.5">$299</div>
+              <div class="flex items-center gap-1 text-[10px] text-amber-500 mt-1">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <span class="text-stone-400">(342)</span>
+              </div>
+            </div>
+            <button onclick="addToCart('Nova Accent Pearl Choker', 299, 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=350&auto=format&fit=crop')" class="mt-2.5 w-full py-1 bg-stone-50 hover:bg-livora-dark hover:text-white text-livora-dark text-[11px] font-semibold rounded transition">
+              Add to Cart
+            </button>
+          </div>
+
+          <!-- Best Seller 5: Aura Silk Slip Gala Reception Gown -->
+          <div class="bg-white rounded-xl border border-stone-100 luxury-card p-3 relative flex flex-col justify-between h-full">
+            <div class="relative rounded-lg overflow-hidden bg-stone-100 aspect-square mb-2.5">
+              <span class="absolute top-2 left-2 z-10 bg-livora-dark text-white text-[9px] font-semibold px-2 py-0.5 rounded">Gala</span>
+              <button onclick="toggleWishlist('Aura Silk Slip Gala Reception Gown', 420, 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?q=80&w=350&auto=format&fit=crop', this)" class="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-white/90 text-stone-600 hover:text-red-500 flex items-center justify-center shadow-sm">
+                <i class="fa-regular fa-heart text-xs"></i>
+              </button>
+              <a href="product-detail.html?name=Aura%20Silk%20Slip%20Gala%20Reception%20Gown&price=420&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1515372039744-b8f02a3ae446%3Fq%3D80%26w%3D350%26auto%3Dformat%26fit%3Dcrop&cat=Couture%20Gowns" class="block w-full h-full">
+                <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?q=80&w=350&auto=format&fit=crop" alt="Aura Silk Slip Gala Reception Gown" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+              </a>
+            </div>
+            <div>
+              <a href="product-detail.html?name=Aura%20Silk%20Slip%20Gala%20Reception%20Gown&price=420&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1515372039744-b8f02a3ae446%3Fq%3D80%26w%3D350%26auto%3Dformat%26fit%3Dcrop&cat=Couture%20Gowns" class="hover:text-livora-sage transition">
+                <h3 class="font-medium text-xs text-livora-dark hover:text-livora-sage transition truncate">Aura Silk Reception Gown</h3>
+              </a>
+              <div class="text-xs font-bold text-livora-dark mt-0.5">$420</div>
+              <div class="flex items-center gap-1 text-[10px] text-amber-500 mt-1">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <span class="text-stone-400">(219)</span>
+              </div>
+            </div>
+            <button onclick="addToCart('Aura Silk Slip Gala Reception Gown', 420, 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?q=80&w=350&auto=format&fit=crop')" class="mt-2.5 w-full py-1 bg-stone-50 hover:bg-livora-dark hover:text-white text-livora-dark text-[11px] font-semibold rounded transition">
+              Add to Cart
+            </button>
+          </div>
+
+          <!-- Best Seller 6: Eden Royal Kundan Heritage Set -->
+          <div class="bg-white rounded-xl border border-stone-100 luxury-card p-3 relative flex flex-col justify-between h-full">
+            <div class="relative rounded-lg overflow-hidden bg-stone-100 aspect-square mb-2.5">
+              <span class="absolute top-2 left-2 z-10 bg-livora-dark text-white text-[9px] font-semibold px-2 py-0.5 rounded">Popular</span>
+              <button onclick="toggleWishlist('Eden Royal Kundan Set', 179, 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=350&auto=format&fit=crop', this)" class="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-white/90 text-stone-600 hover:text-red-500 flex items-center justify-center shadow-sm">
+                <i class="fa-regular fa-heart text-xs"></i>
+              </button>
+              <a href="product-detail.html?name=Eden%20Royal%20Kundan%20Set&price=179&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1535632066927-ab7c9ab60908%3Fq%3D80%26w%3D350%26auto%3Dformat%26fit%3Dcrop&cat=Fine%20Jewelry" class="block w-full h-full">
+                <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=350&auto=format&fit=crop" alt="Eden Royal Kundan Set" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+              </a>
+            </div>
+            <div>
+              <a href="product-detail.html?name=Eden%20Royal%20Kundan%20Set&price=179&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1535632066927-ab7c9ab60908%3Fq%3D80%26w%3D350%26auto%3Dformat%26fit%3Dcrop&cat=Fine%20Jewelry" class="hover:text-livora-sage transition">
+                <h3 class="font-medium text-xs text-livora-dark hover:text-livora-sage transition truncate">Eden Royal Kundan Set</h3>
+              </a>
+              <div class="text-xs font-bold text-livora-dark mt-0.5">$179</div>
+              <div class="flex items-center gap-1 text-[10px] text-amber-500 mt-1">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <span class="text-stone-400">(199)</span>
+              </div>
+            </div>
+            <button onclick="addToCart('Eden Royal Kundan Set', 179, 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=350&auto=format&fit=crop')" class="mt-2.5 w-full py-1 bg-stone-50 hover:bg-livora-dark hover:text-white text-livora-dark text-[11px] font-semibold rounded transition">
+              Add to Cart
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right: Curated Collections (4 Vertical Editorial Cards) -->
+      <div class="lg:col-span-5 flex flex-col justify-between h-full">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="font-serif text-2xl sm:text-3xl text-livora-dark font-medium">Curated Collections</h2>
+          <a href="fine-jewelry.html" class="text-xs font-semibold text-stone-700 hover:text-livora-dark flex items-center gap-1 group">
+            <span>View All</span>
+            <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-2 lg:grid-rows-2 gap-3.5 sm:gap-4 flex-1 h-full">
+          
+          <!-- Curated 1: Bridal Atelier (Wedding Gowns & Cathedral Veils) -->
+          <a href="bridal.html" class="group block relative rounded-xl overflow-hidden shadow-sm aspect-[4/5] lg:aspect-auto h-full w-full bg-stone-200">
+            <img src="https://images.unsplash.com/photo-1594552072238-b8a33785b261?q=80&w=500&auto=format&fit=crop" alt="Bridal Atelier Wedding Gowns" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+            <div class="absolute bottom-3 left-3 right-3 text-white">
+              <span class="text-xs sm:text-sm font-semibold block leading-tight">Bridal Atelier</span>
+              <span class="text-[10px] text-stone-300">Wedding Gowns & Veils</span>
+            </div>
+          </a>
+
+          <!-- Curated 2 -->
+          <a href="bridal.html" class="group block relative rounded-xl overflow-hidden shadow-sm aspect-[4/5] lg:aspect-auto h-full w-full bg-stone-200">
+            <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=500&auto=format&fit=crop" alt="Royal Heritage" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+            <div class="absolute bottom-3 left-3 right-3 text-white">
+              <span class="text-xs sm:text-sm font-semibold block leading-tight">Royal Heritage</span>
+              <span class="text-[10px] text-stone-300">Bridal Polki & Silk</span>
+            </div>
+          </a>
+
+          <!-- Curated 3 -->
+          <a href="gowns.html" class="group block relative rounded-xl overflow-hidden shadow-sm aspect-[4/5] lg:aspect-auto h-full w-full bg-stone-200">
+            <img src="https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=500&auto=format&fit=crop" alt="Sunset Soirée" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+            <div class="absolute bottom-3 left-3 right-3 text-white">
+              <span class="text-xs sm:text-sm font-semibold block leading-tight">Sunset Soirée</span>
+              <span class="text-[10px] text-stone-300">Evening Gowns</span>
+            </div>
+          </a>
+
+          <!-- Curated 4 -->
+          <a href="gowns.html#cocktail" class="group block relative rounded-xl overflow-hidden shadow-sm aspect-[4/5] lg:aspect-auto h-full w-full bg-stone-200">
+            <img src="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=500&auto=format&fit=crop" alt="Cocktail Chic" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+            <div class="absolute bottom-3 left-3 right-3 text-white">
+              <span class="text-xs sm:text-sm font-semibold block leading-tight">Cocktail Chic</span>
+              <span class="text-[10px] text-stone-300">Party Silhouettes</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 9. "JUST FOR YOU" + SUSTAINABILITY SPOTLIGHT -->
+  <!-- ========================================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+      
+      <!-- Left: Just For You 4 Cards -->
+      <div class="lg:col-span-7">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <h2 class="font-serif text-2xl sm:text-3xl text-livora-dark font-medium inline-block mr-2">Just For You</h2>
+            <span class="text-xs text-stone-500 font-light hidden sm:inline">Because great moments reflect your elegance.</span>
+          </div>
+          <a href="bridal.html" class="text-xs font-semibold text-stone-700 hover:text-livora-dark flex items-center gap-1 group">
+            <span>View All</span>
+            <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
+          
+          <!-- Item 1: Elysian Bridal Cathedral Veil & Wedding Gown -->
+          <div class="bg-white rounded-xl border border-stone-100 p-2.5 luxury-card">
+            <div class="relative rounded-lg overflow-hidden bg-stone-100 aspect-square mb-2">
+              <span class="absolute top-1.5 left-1.5 z-10 bg-livora-dark text-white text-[8px] font-semibold px-1.5 py-0.5 rounded">Bridal</span>
+              <button onclick="toggleWishlist('Elysian Bridal Cathedral Veil & Gown', 890, 'https://images.unsplash.com/photo-1594552072238-b8a33785b261?q=80&w=300&auto=format&fit=crop', this)" class="absolute top-1.5 right-1.5 z-10 w-6 h-6 rounded-full bg-white/90 text-stone-600 hover:text-red-500 flex items-center justify-center">
+                <i class="fa-regular fa-heart text-[10px]"></i>
+              </button>
+              <a href="product-detail.html?name=Elysian%20Bridal%20Cathedral%20Veil%20%26%20Gown&price=890&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1594552072238-b8a33785b261%3Fq%3D80%26w%3D300%26auto%3Dformat%26fit%3Dcrop&cat=Bridal%20Couture" class="block w-full h-full">
+                <img src="https://images.unsplash.com/photo-1594552072238-b8a33785b261?q=80&w=300&auto=format&fit=crop" alt="Elysian Bridal Cathedral Veil & Gown" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+              </a>
+            </div>
+            <a href="product-detail.html?name=Elysian%20Bridal%20Cathedral%20Veil%20%26%20Gown&price=890&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1594552072238-b8a33785b261%3Fq%3D80%26w%3D300%26auto%3Dformat%26fit%3Dcrop&cat=Bridal%20Couture" class="hover:text-livora-sage transition">
+              <h4 class="font-medium text-[11px] text-livora-dark hover:text-livora-sage transition truncate">Elysian Bridal Veil & Gown</h4>
+            </a>
+            <div class="text-xs font-bold text-livora-dark mt-0.5">$890</div>
+          </div>
+
+          <!-- Item 2: Pure Handloom Mulberry Silk Stole -->
+          <div class="bg-white rounded-xl border border-stone-100 p-2.5 luxury-card">
+            <div class="relative rounded-lg overflow-hidden bg-stone-100 aspect-square mb-2">
+              <button onclick="toggleWishlist('Pure Handloom Mulberry Silk Stole', 69, 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=300&auto=format&fit=crop', this)" class="absolute top-1.5 right-1.5 z-10 w-6 h-6 rounded-full bg-white/90 text-stone-600 hover:text-red-500 flex items-center justify-center">
+                <i class="fa-regular fa-heart text-[10px]"></i>
+              </button>
+              <a href="product-detail.html?name=Pure%20Handloom%20Mulberry%20Silk%20Stole&price=69&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1583391733956-3750e0ff4e8b%3Fq%3D80%26w%3D300%26auto%3Dformat%26fit%3Dcrop&cat=Couture%20Silks" class="block w-full h-full">
+                <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=300&auto=format&fit=crop" alt="Pure Handloom Mulberry Silk Stole" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+              </a>
+            </div>
+            <a href="product-detail.html?name=Pure%20Handloom%20Mulberry%20Silk%20Stole&price=69&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1583391733956-3750e0ff4e8b%3Fq%3D80%26w%3D300%26auto%3Dformat%26fit%3Dcrop&cat=Couture%20Silks" class="hover:text-livora-sage transition">
+              <h4 class="font-medium text-[11px] text-livora-dark hover:text-livora-sage transition truncate">Pure Mulberry Silk Stole</h4>
+            </a>
+            <div class="text-xs font-bold text-livora-dark mt-0.5">$69</div>
+          </div>
+
+          <!-- Item 3: Serene Pastel Organza Gala Dress -->
+          <div class="bg-white rounded-xl border border-stone-100 p-2.5 luxury-card">
+            <div class="relative rounded-lg overflow-hidden bg-stone-100 aspect-square mb-2">
+              <button onclick="toggleWishlist('Serene Pastel Organza Gala Dress', 165, 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=300&auto=format&fit=crop', this)" class="absolute top-1.5 right-1.5 z-10 w-6 h-6 rounded-full bg-white/90 text-stone-600 hover:text-red-500 flex items-center justify-center">
+                <i class="fa-regular fa-heart text-[10px]"></i>
+              </button>
+              <a href="product-detail.html?name=Serene%20Pastel%20Organza%20Gala%20Dress&price=165&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1566174053879-31528523f8ae%3Fq%3D80%26w%3D300%26auto%3Dformat%26fit%3Dcrop&cat=Couture%20Gowns" class="block w-full h-full">
+                <img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=300&auto=format&fit=crop" alt="Serene Pastel Organza Gala Dress" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+              </a>
+            </div>
+            <a href="product-detail.html?name=Serene%20Pastel%20Organza%20Gala%20Dress&price=165&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1566174053879-31528523f8ae%3Fq%3D80%26w%3D300%26auto%3Dformat%26fit%3Dcrop&cat=Couture%20Gowns" class="hover:text-livora-sage transition">
+              <h4 class="font-medium text-[11px] text-livora-dark hover:text-livora-sage transition truncate">Serene Organza Gala Dress</h4>
+            </a>
+            <div class="text-xs font-bold text-livora-dark mt-0.5">$165</div>
+          </div>
+
+          <!-- Item 4: Ceramic Solitaire Pearl Pendant -->
+          <div class="bg-white rounded-xl border border-stone-100 p-2.5 luxury-card">
+            <div class="relative rounded-lg overflow-hidden bg-stone-100 aspect-square mb-2">
+              <button onclick="toggleWishlist('Ceramic Solitaire Pearl Pendant', 49, 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?q=80&w=300&auto=format&fit=crop', this)" class="absolute top-1.5 right-1.5 z-10 w-6 h-6 rounded-full bg-white/90 text-stone-600 hover:text-red-500 flex items-center justify-center">
+                <i class="fa-regular fa-heart text-[10px]"></i>
+              </button>
+              <a href="product-detail.html?name=Ceramic%20Solitaire%20Pearl%20Pendant&price=49&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1599643477877-530eb83abc8e%3Fq%3D80%26w%3D300%26auto%3Dformat%26fit%3Dcrop&cat=Fine%20Jewelry" class="block w-full h-full">
+                <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?q=80&w=300&auto=format&fit=crop" alt="Ceramic Solitaire Pearl Pendant" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+              </a>
+            </div>
+            <a href="product-detail.html?name=Ceramic%20Solitaire%20Pearl%20Pendant&price=49&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1599643477877-530eb83abc8e%3Fq%3D80%26w%3D300%26auto%3Dformat%26fit%3Dcrop&cat=Fine%20Jewelry" class="hover:text-livora-sage transition">
+              <h4 class="font-medium text-[11px] text-livora-dark hover:text-livora-sage transition truncate">Ceramic Pearl Pendant</h4>
+            </a>
+            <div class="text-xs font-bold text-livora-dark mt-0.5">$49</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right: Sustainable Ethical Luxury Banner (Deep Green) -->
+      <div class="lg:col-span-5 bg-livora-dark text-white rounded-2xl p-7 sm:p-9 flex flex-col justify-between relative overflow-hidden shadow-sm">
+        <div class="z-10 max-w-sm">
+          <span class="text-[10px] tracking-widest uppercase font-semibold text-livora-gold mb-2 block">CONSCIOUS ATELIER</span>
+          <h3 class="font-serif text-2xl sm:text-3xl font-medium mb-3 leading-tight">
+            Radiate Sustainably
+          </h3>
+          <p class="text-xs sm:text-sm text-stone-300 mb-6 leading-relaxed">
+            100% Conflict-free certified lab & mined diamonds, paired with hand-spun organic mulberry silks.
+          </p>
+          <a href="fine-jewelry.html" class="inline-flex items-center gap-2 bg-white text-livora-dark px-5 py-2.5 rounded-full text-xs font-semibold hover:bg-stone-100 transition shadow-sm group">
+            <span>Shop Sustainable</span>
+            <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+          </a>
+        </div>
+
+        <div class="flex items-center gap-6 mt-6 pt-4 border-t border-white/15 text-[11px] text-stone-300 z-10">
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-gem text-livora-gold"></i>
+            <span>Conflict-Free Gems</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-leaf text-emerald-400"></i>
+            <span>Artisan Looms</span>
+          </div>
+        </div>
+
+        <!-- Emerald Glow / Plant Accent Background -->
+        <div class="absolute -right-6 -bottom-10 w-48 h-48 rounded-full bg-livora-sage/40 blur-2xl pointer-events-none"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 10. TESTIMONIALS: "WHAT OUR CUSTOMERS SAY" -->
+  <!-- ========================================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="font-serif text-2xl sm:text-3xl text-livora-dark font-medium">What Our Customers Say</h2>
+      <a href="help.html#reviews" class="text-xs font-semibold text-stone-700 hover:text-livora-dark flex items-center gap-1 group">
+        <span>View All Reviews</span>
+        <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      
+      <!-- Review 1 -->
+      <div class="bg-white rounded-xl p-5 border border-stone-100 luxury-card flex flex-col justify-between">
+        <div>
+          <div class="flex text-amber-400 text-xs mb-3 gap-0.5">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-xs sm:text-sm text-stone-700 italic leading-relaxed mb-4">
+            "The Avela diamond choker is mesmerizing! The craftsmanship and brilliance of the stones completely exceeded my expectations."
+          </p>
+        </div>
+        <div class="flex items-center gap-3 pt-3 border-t border-stone-100">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150&auto=format&fit=crop" alt="Sarah M." class="w-9 h-9 rounded-full object-cover" />
+          <div>
+            <div class="text-xs font-semibold text-livora-dark">Sarah M.</div>
+            <div class="text-[10px] text-stone-400">Verified Buyer</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 2 -->
+      <div class="bg-white rounded-xl p-5 border border-stone-100 luxury-card flex flex-col justify-between">
+        <div>
+          <div class="flex text-amber-400 text-xs mb-3 gap-0.5">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-xs sm:text-sm text-stone-700 italic leading-relaxed mb-4">
+            "Ordered the Noor silk bridal gown for our reception. Fast insured delivery, regal packaging, and fits like a glove. Highly recommended!"
+          </p>
+        </div>
+        <div class="flex items-center gap-3 pt-3 border-t border-stone-100">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop" alt="Ali K." class="w-9 h-9 rounded-full object-cover" />
+          <div>
+            <div class="text-xs font-semibold text-livora-dark">Ali K.</div>
+            <div class="text-[10px] text-stone-400">Verified Buyer</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 3 -->
+      <div class="bg-white rounded-xl p-5 border border-stone-100 luxury-card flex flex-col justify-between">
+        <div>
+          <div class="flex text-amber-400 text-xs mb-3 gap-0.5">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-xs sm:text-sm text-stone-700 italic leading-relaxed mb-4">
+            "Flawless solitaires and timeless design. Exactly what I was looking for my anniversary gala. Livora has earned a client for life."
+          </p>
+        </div>
+        <div class="flex items-center gap-3 pt-3 border-t border-stone-100">
+          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=150&auto=format&fit=crop" alt="Emma R." class="w-9 h-9 rounded-full object-cover" />
+          <div>
+            <div class="text-xs font-semibold text-livora-dark">Emma R.</div>
+            <div class="text-[10px] text-stone-400">Verified Buyer</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 11. TRUST & VALUE PROPOSITIONS STRIP -->
+  <!-- ========================================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="bg-white rounded-xl border border-stone-200 py-6 px-4 shadow-sm">
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
+        
+        <div class="flex flex-col items-center">
+          <i class="fa-solid fa-truck-fast text-xl text-livora-dark mb-2"></i>
+          <span class="text-xs font-semibold text-livora-dark">Free Insured Shipping</span>
+          <span class="text-[11px] text-stone-400">On orders over $50</span>
+        </div>
+
+        <div class="flex flex-col items-center">
+          <i class="fa-solid fa-shield-halved text-xl text-livora-dark mb-2"></i>
+          <span class="text-xs font-semibold text-livora-dark">Secure Payments</span>
+          <span class="text-[11px] text-stone-400">100% Protected & Encrypted</span>
+        </div>
+
+        <div class="flex flex-col items-center">
+          <i class="fa-solid fa-rotate-left text-xl text-livora-dark mb-2"></i>
+          <span class="text-xs font-semibold text-livora-dark">Easy 30-Day Returns</span>
+          <span class="text-[11px] text-stone-400">Hassle-free exchanges</span>
+        </div>
+
+        <div class="flex flex-col items-center">
+          <i class="fa-solid fa-award text-xl text-livora-dark mb-2"></i>
+          <span class="text-xs font-semibold text-livora-dark">Certified Authenticity</span>
+          <span class="text-[11px] text-stone-400">100% GIA / IGI Hallmarked</span>
+        </div>
+
+        <div class="flex flex-col items-center col-span-2 sm:col-span-1">
+          <i class="fa-solid fa-heart text-xl text-livora-dark mb-2"></i>
+          <span class="text-xs font-semibold text-livora-dark">Happy Customers</span>
+          <span class="text-[11px] text-stone-400">Trusted by 100K+ brides</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 12. VIP NEWSLETTER: "JOIN OUR INNER CIRCLE" -->
+  <!-- ========================================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="bg-[#ECE4DA] rounded-2xl p-8 sm:p-12 border border-stone-200 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
+      
+      <div class="max-w-md z-10 text-center md:text-left">
+        <h3 class="font-serif text-2xl sm:text-3xl font-medium text-livora-dark mb-2">
+          Join Our Inner Circle
+        </h3>
+        <p class="text-xs sm:text-sm text-stone-600">
+          Get exclusive private trunk previews, bridal styling sessions, and seasonal couture gifts.
+        </p>
+      </div>
+
+      <div class="w-full max-w-md z-10">
+        <form onsubmit="handleNewsletter(event)" class="flex items-center bg-white rounded-full p-1.5 border border-stone-200 shadow-sm">
+          <input 
+            type="email" 
+            id="newsletter-email" 
+            placeholder="Enter your email address" 
+            required 
+            class="flex-1 px-4 py-2 text-xs sm:text-sm bg-transparent focus:outline-none placeholder:text-stone-400"
+          />
+          <button type="submit" class="bg-livora-dark text-white px-6 py-2.5 rounded-full text-xs font-semibold tracking-wider hover:bg-livora-sage transition shadow-sm">
+            Subscribe
+          </button>
+        </form>
+      </div>
+
+      <!-- Right Script Accent & Decorative Element -->
+      <div class="hidden xl:block absolute right-6 top-6 text-right opacity-80 pointer-events-none">
+        <span class="font-script text-3xl text-stone-600">
+          Elegance for<br />Every Story
+        </span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 13. COMPREHENSIVE MEGA FOOTER (Deep Emerald Green) -->
+  <!-- ========================================== -->
+  <footer class="bg-livora-dark text-stone-300 pt-16 pb-8 border-t border-stone-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-stone-800">
+        
+        <!-- Col 1: Brand Info -->
+        <div class="lg:col-span-1">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-livora-gold">
+              <i class="fa-regular fa-gem text-sm"></i>
+            </div>
+            <span class="font-display font-bold text-xl tracking-[0.15em] text-white">LIVORA</span>
+          </div>
+          <p class="text-xs text-stone-400 leading-relaxed mb-6">
+            Bespoke haute jewelry and timeless couture gowns tailored for moments that define generations.
+          </p>
+          <div class="flex items-center gap-4 text-stone-400">
+            <a href="#" class="hover:text-white transition"><i class="fa-brands fa-facebook-f text-sm"></i></a>
+            <a href="#" class="hover:text-white transition"><i class="fa-brands fa-instagram text-sm"></i></a>
+            <a href="#" class="hover:text-white transition"><i class="fa-brands fa-pinterest-p text-sm"></i></a>
+            <a href="#" class="hover:text-white transition"><i class="fa-brands fa-youtube text-sm"></i></a>
+            <a href="#" class="hover:text-white transition"><i class="fa-brands fa-tiktok text-sm"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Shop -->
+        <div>
+          <h4 class="text-xs font-semibold text-white uppercase tracking-wider mb-4">Shop Collections</h4>
+          <ul class="space-y-2.5 text-xs">
+            <li><a href="rings.html" class="hover:text-white transition">Solitaire Rings</a></li>
+            <li><a href="chokers.html" class="hover:text-white transition">Royal Diamond Chokers</a></li>
+            <li><a href="gowns.html" class="hover:text-white transition">Evening Silk Gowns</a></li>
+            <li><a href="bridal.html" class="hover:text-white transition">Heirloom Bridal Lehengas</a></li>
+            <li><a href="earrings.html" class="hover:text-white transition">Baroque Pearl Drops</a></li>
+            <li><a href="sale.html" class="text-livora-gold hover:text-white transition font-medium">Special Sale Items</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Client Care / Help -->
+        <div>
+          <h4 class="text-xs font-semibold text-white uppercase tracking-wider mb-4">Client Concierge</h4>
+          <ul class="space-y-2.5 text-xs">
+            <li><a href="track-order.html" class="hover:text-white transition">Track Your Order</a></li>
+            <li><a href="help.html#returns" class="hover:text-white transition">Returns & Exchanges</a></li>
+            <li><a href="help.html#shipping" class="hover:text-white transition">Worldwide Shipping Info</a></li>
+            <li><a href="rings.html#ring-guide" class="hover:text-white transition">Ring & Gown Size Guide</a></li>
+            <li><a href="help.html#faq" class="hover:text-white transition">Frequently Asked Questions</a></li>
+            <li><a href="help.html#contact" class="hover:text-white transition">Book a Virtual Stylist</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: The Atelier / About -->
+        <div>
+          <h4 class="text-xs font-semibold text-white uppercase tracking-wider mb-4">The Atelier</h4>
+          <ul class="space-y-2.5 text-xs">
+            <li><a href="index.html#sustainable" class="hover:text-white transition">Our Heritage Story</a></li>
+            <li><a href="index.html#sustainable" class="hover:text-white transition">Ethical Sourcing & Diamonds</a></li>
+            <li><a href="bridal.html" class="hover:text-white transition">Master Craftsmen</a></li>
+            <li><a href="help.html" class="hover:text-white transition">Careers at Livora</a></li>
+            <li><a href="help.html" class="hover:text-white transition">Press & Editorial</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 5: App Download -->
+        <div>
+          <h4 class="text-xs font-semibold text-white uppercase tracking-wider mb-2">Download Our App</h4>
+          <p class="text-xs text-stone-400 mb-4">A royal boutique in your pocket. Exclusive access anywhere.</p>
+          
+          <div class="space-y-2.5">
+            <a href="#" class="flex items-center gap-3 bg-stone-900/90 border border-stone-700 hover:border-stone-500 px-4 py-2 rounded-lg transition group">
+              <i class="fa-brands fa-apple text-xl text-white"></i>
+              <div class="text-left">
+                <span class="text-[9px] text-stone-400 block leading-tight">Download on the</span>
+                <span class="text-xs font-semibold text-white block leading-tight">App Store</span>
+              </div>
+            </a>
+
+            <a href="#" class="flex items-center gap-3 bg-stone-900/90 border border-stone-700 hover:border-stone-500 px-4 py-2 rounded-lg transition group">
+              <i class="fa-brands fa-google-play text-lg text-white"></i>
+              <div class="text-left">
+                <span class="text-[9px] text-stone-400 block leading-tight">GET IT ON</span>
+                <span class="text-xs font-semibold text-white block leading-tight">Google Play</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Sub-Footer -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-stone-400">
+        <div>
+          © 2026 LIVORA Haute Jewels & Couture. All rights reserved.
+        </div>
+        <div class="flex items-center gap-5">
+          <a href="help.html#privacy" class="hover:text-white transition">Privacy Policy</a>
+          <span>|</span>
+          <a href="help.html#terms" class="hover:text-white transition">Terms of Service</a>
+          <span>|</span>
+          <a href="help.html#sitemap" class="hover:text-white transition">Sitemap</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- 14. MOBILE ANDROID APP BOTTOM NAVIGATION BAR -->
+  <!-- ========================================== -->
+  <nav class="md:hidden android-bottom-bar px-3 py-1">
+    <div class="flex items-center justify-around text-center">
+      
+      <!-- Home Tab -->
+      <a href="index.html" class="android-tab active" id="tab-home">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </a>
+
+      <!-- Categories Tab -->
+      <a href="fine-jewelry.html" class="android-tab" id="tab-categories">
+        <i class="fa-solid fa-shapes"></i>
+        <span>Catalog</span>
+      </a>
+
+      <!-- Wishlist Tab -->
+      <a href="wishlist.html" class="android-tab relative" id="tab-wishlist">
+        <i class="fa-regular fa-heart"></i>
+        <span class="wishlist-counter-badge absolute 1 top-0.5 right-2 bg-livora-dark text-white text-[8px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center">2</span>
+        <span>Wishlist</span>
+      </a>
+
+      <!-- Cart / Bag Tab -->
+      <a href="cart.html" class="android-tab relative" id="tab-cart">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="cart-counter-badge absolute 1 top-0.5 right-2 bg-livora-dark text-white text-[8px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center">3</span>
+        <span>Bag</span>
+      </a>
+
+      <!-- Account Tab -->
+      <a href="account.html" class="android-tab" id="tab-account">
+        <i class="fa-regular fa-user"></i>
+        <span>Profile</span>
+      </a>
+
+    </div>
+  </nav>
+
+  <!-- ========================================== -->
+  <!-- 15. INTERACTIVE CART DRAWER (Slide-in) -->
+  <!-- ========================================== -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 pointer-events-none transition-opacity duration-300 opacity-0">
+    <div onclick="toggleCartDrawer()" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+    <div id="cart-panel" class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col justify-between transform translate-x-full transition-transform duration-300 pointer-events-auto">
+      
+      <div class="p-4 sm:p-5 border-b border-stone-200 flex items-center justify-between bg-stone-50">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-bag-shopping text-livora-dark"></i>
+          <h3 class="font-serif text-lg font-semibold text-livora-dark">Your Shopping Bag (<span id="drawer-item-count">3</span>)</h3>
+        </div>
+        <button onclick="toggleCartDrawer()" class="w-8 h-8 rounded-full bg-stone-200 hover:bg-stone-300 flex items-center justify-center transition">
+          <i class="fa-solid fa-xmark text-stone-700 text-sm"></i>
+        </button>
+      </div>
+
+      <div class="bg-amber-50 px-5 py-2.5 border-b border-amber-100 flex items-center justify-between text-xs text-amber-900">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-circle-check text-emerald-600"></i>
+          <span>You unlocked <strong>Free Insured Shipping!</strong></span>
+        </div>
+        <i class="fa-solid fa-gem text-amber-600 text-xs"></i>
+      </div>
+
+      <div class="p-5 flex-1 overflow-y-auto space-y-4 drawer-scroll" id="cart-items-container">
+        <!-- Injected dynamically by main.js -->
+      </div>
+
+      <div class="p-5 border-t border-stone-200 bg-stone-50 space-y-3">
+        <div class="flex items-center justify-between text-sm">
+          <span class="text-stone-600">Estimated Total</span>
+          <span class="font-bold text-base text-livora-dark" id="drawer-subtotal">$1,647.00</span>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <a href="cart.html" class="py-3 bg-stone-100 text-livora-dark rounded-xl font-semibold text-xs text-center uppercase tracking-wider hover:bg-stone-200 transition">
+            View Bag
+          </a>
+          <a href="cart.html#checkout" class="py-3 bg-livora-dark text-white rounded-xl font-semibold text-xs text-center uppercase tracking-wider hover:bg-livora-sage transition flex items-center justify-center gap-1.5 shadow-md">
+            <i class="fa-solid fa-lock text-[10px]"></i>
+            <span>Checkout</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Shared Interactive Logic -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
