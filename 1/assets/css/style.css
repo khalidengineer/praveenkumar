@@ -1,0 +1,218 @@
+/* ==========================================================================
+   LIVORA — HAUTE JEWELS & BESPOKE COUTURE
+   Shared Luxury Design System & Android App Theme
+   ========================================================================== */
+
+/* Custom Smooth Transitions & Luxury Polish */
+:root {
+  --livora-dark: #162E25;
+  --livora-sage: #244A3C;
+  --livora-light-sage: #386050;
+  --livora-bg: #FAF8F5;
+  --livora-cream: #EFE7DE;
+  --livora-gold: #C5A880;
+  --livora-gold-accent: #D4AF37;
+  --livora-sale: #DC2626;
+  --livora-border: #EAE6DF;
+  --livora-card: #FFFFFF;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--livora-bg);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #1A2421;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+  padding-bottom: max(4.75rem, calc(4.25rem + env(safe-area-inset-bottom, 0px)));
+}
+
+@media (min-width: 768px) {
+  body {
+    padding-bottom: 0 !important;
+  }
+}
+
+/* Luxury Typography Utilities */
+.font-display {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-serif {
+  font-family: 'Cormorant Garamond', Garamond, Georgia, serif;
+}
+
+.font-script {
+  font-family: 'Alex Brush', cursive;
+}
+
+/* Hide Scrollbar for App Carousel & Story Highlights */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Smooth Touch Scrolling */
+.smooth-touch-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Luxury Product Card Hover Elevation */
+.luxury-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+.luxury-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px -10px rgba(22, 46, 37, 0.08);
+  border-color: #DCD6CC;
+}
+
+/* Tactile Active State for Native Mobile Touch Feel */
+.android-tab:active,
+.luxury-card button:active,
+.touch-press:active {
+  transform: scale(0.96);
+}
+
+/* Image Zoom on Card Hover */
+.luxury-card-img {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.luxury-card:hover .luxury-card-img {
+  transform: scale(1.05);
+}
+
+/* Android App Bottom Navigation System with Safe Area */
+.android-bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(220, 214, 204, 0.7);
+  box-shadow: 0 -4px 20px rgba(22, 46, 37, 0.06);
+  padding-bottom: max(6px, env(safe-area-inset-bottom, 6px));
+  padding-top: 5px;
+}
+
+.android-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 0;
+  position: relative;
+  color: #717774;
+  font-size: 10px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  min-height: 44px;
+  user-select: none;
+}
+
+.android-tab i {
+  font-size: 17px;
+  margin-bottom: 2px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.android-tab.active {
+  color: var(--livora-dark);
+  font-weight: 700;
+}
+
+.android-tab.active i {
+  color: var(--livora-dark);
+  transform: translateY(-2px);
+}
+
+.android-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  background-color: var(--livora-dark);
+  border-radius: 9999px;
+}
+
+/* Toast Notifications */
+#toast {
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+#toast.show {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Custom Checkbox & Radio for Filters */
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+  background-color: var(--livora-dark);
+  border-color: var(--livora-dark);
+}
+
+/* Custom Scrollbar for Drawers */
+.drawer-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.drawer-scroll::-webkit-scrollbar-thumb {
+  background: #D5CFC5;
+  border-radius: 4px;
+}
+
+/* Drawer Transitions */
+.drawer-slide-transition {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+/* ==========================================
+   HERO SLIDER BULLETPROOF CAROUSEL ENGINE
+   ========================================== */
+#hero-slider-container {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.hero-slide {
+  position: absolute !important;
+  inset: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  z-index: 0;
+  transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.hero-slide.is-active {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  z-index: 10 !important;
+}
+

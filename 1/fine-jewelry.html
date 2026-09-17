@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Fine Jewelry Collection — LIVORA Haute Jewels</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'livora-dark': '#162E25',
+            'livora-sage': '#244A3C',
+            'livora-bg': '#FAF8F5',
+            'livora-cream': '#EFE7DE',
+            'livora-gold': '#C5A880',
+            'livora-sale': '#DC2626',
+            'livora-border': '#EAE6DF'
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            display: ['"Playfair Display"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            script: ['"Alex Brush"', 'cursive']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+
+<body class="antialiased pb-20 md:pb-0">
+
+  <!-- TOP BAR -->
+  <div class="bg-livora-dark text-white text-[11px] md:text-xs py-2 px-4 font-medium tracking-wide">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="hidden md:block w-1/4"></div>
+      <div class="text-center w-full md:w-auto flex items-center justify-center gap-2">
+        <span class="text-amber-300">✨</span>
+        <span>Free Insured Worldwide Shipping on Orders Over Rs. 50</span>
+        <span class="hidden sm:inline text-livora-gold">|</span>
+        <span class="hidden sm:inline text-stone-300">Timeless Jewels. Radiant Couture.</span>
+      </div>
+      <div class="hidden md:flex justify-end items-center gap-5 w-1/4 text-stone-300 text-[11px]">
+        <a href="track-order.html" class="hover:text-white transition">Track Order</a>
+        <span class="text-stone-500">|</span>
+        <a href="help.html" class="hover:text-white transition">Concierge & Help</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-livora-border transition-all duration-300 shadow-sm" id="main-header">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <button class="md:hidden text-livora-dark p-2 hover:bg-stone-100 rounded-lg transition" onclick="toggleMobileDrawer()" aria-label="Open Menu">
+          <i class="fa-solid fa-bars text-lg"></i>
+        </button>
+        <a href="index.html" class="flex items-center gap-2 group">
+          <div class="w-8 h-8 rounded-lg bg-livora-dark flex items-center justify-center text-white shadow-sm">
+            <i class="fa-regular fa-gem text-sm text-livora-gold"></i>
+          </div>
+          <div>
+            <span class="font-display font-bold text-xl md:text-2xl tracking-[0.15em] text-livora-dark block leading-none">LIVORA</span>
+            <span class="text-[8px] md:text-[9px] tracking-[0.25em] text-stone-500 uppercase block font-semibold mt-0.5">Haute Jewels & Couture</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="hidden md:flex flex-1 max-w-xl mx-6">
+        <div class="relative w-full">
+          <input type="text" placeholder="Search fine diamonds, rubies, emerald solitaires..." class="w-full pl-4 pr-12 py-2.5 bg-stone-50 text-xs md:text-sm rounded-full border border-stone-200 focus:outline-none focus:border-livora-dark" />
+          <button class="absolute right-1 top-1 bottom-1 w-9 bg-livora-dark text-white rounded-full flex items-center justify-center">
+            <i class="fa-solid fa-magnifying-glass text-xs"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4 sm:gap-6 text-livora-dark">
+        <a href="account.html" class="hidden sm:flex flex-col items-center"><i class="fa-regular fa-user text-base"></i><span class="text-[11px] mt-0.5">Account</span></a>
+        <a href="wishlist.html" class="flex flex-col items-center relative">
+          <div class="relative">
+            <i class="fa-regular fa-heart text-base"></i>
+            <span class="wishlist-counter-badge absolute -top-1.5 -right-2 bg-livora-dark text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">2</span>
+          </div>
+          <span class="hidden sm:inline text-[11px] mt-0.5">Wishlist</span>
+        </a>
+        <button onclick="toggleCartDrawer()" class="flex items-center gap-2 bg-stone-100 px-3 py-1.5 rounded-full">
+          <div class="relative">
+            <i class="fa-solid fa-bag-shopping text-base text-livora-dark"></i>
+            <span class="cart-counter-badge absolute -top-2 -right-2.5 bg-livora-dark text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">3</span>
+          </div>
+          <span class="cart-header-total text-xs font-semibold text-livora-dark hidden sm:inline">Rs. 1,647</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- SUB CATEGORY BAR -->
+    <div class="border-t border-livora-border/60 bg-livora-bg overflow-x-auto no-scrollbar">
+      <div class="max-w-7xl mx-auto px-4 flex items-center justify-between gap-6 py-2.5 text-[11.5px] font-medium text-stone-700 whitespace-nowrap min-w-max">
+        <a href="fine-jewelry.html" class="flex items-center gap-1.5 text-livora-dark font-bold border-b border-livora-dark pb-0.5"><i class="fa-solid fa-gem text-xs"></i> Fine Jewelry</a>
+        <a href="chokers.html" class="flex items-center gap-1.5 hover:text-livora-dark transition"><i class="fa-solid fa-necklace text-xs"></i> Necklaces & Chokers</a>
+        <a href="rings.html" class="flex items-center gap-1.5 hover:text-livora-dark transition"><i class="fa-solid fa-ring text-xs"></i> Solitaire Rings</a>
+        <a href="gowns.html" class="flex items-center gap-1.5 hover:text-livora-dark transition"><i class="fa-solid fa-person-dress text-xs"></i> Evening Gowns</a>
+        <a href="bridal.html" class="flex items-center gap-1.5 hover:text-livora-dark transition"><i class="fa-solid fa-crown text-xs"></i> Bridal Lehengas</a>
+        <a href="earrings.html" class="flex items-center gap-1.5 hover:text-livora-dark transition"><i class="fa-solid fa-sparkles text-xs"></i> Earrings & Drops</a>
+        <a href="sale.html" class="flex items-center gap-1.5 text-livora-sale font-bold bg-red-50 px-2.5 py-0.5 rounded-full"><i class="fa-solid fa-tags text-xs"></i> Special Sale</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB & HERO BANNER -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-6">
+    <div class="text-xs text-stone-500 mb-4">
+      <a href="index.html" class="hover:text-livora-dark">Home</a> / <span class="text-livora-dark font-medium">Fine Jewelry</span>
+    </div>
+
+    <div class="relative bg-livora-dark text-white rounded-2xl p-8 md:p-12 overflow-hidden shadow-sm">
+      <div class="relative z-10 max-w-xl">
+        <span class="text-[10px] uppercase tracking-widest text-livora-gold font-semibold mb-2 block">ATELIER VAULT</span>
+        <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal mb-4">The Fine Jewelry Collection</h1>
+        <p class="text-xs sm:text-sm text-stone-300 font-light leading-relaxed">
+          From luminous conflict-free solitaires to artisanal 22k temple treasures. Each piece is hallmarked with master certification.
+        </p>
+      </div>
+      <div class="absolute right-0 top-0 bottom-0 w-1/2 opacity-20 pointer-events-none hidden md:block">
+        <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover" />
+      </div>
+    </div>
+  </section>
+
+  <!-- CATALOG & FILTERS -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      
+      <!-- Filter Sidebar (Desktop) -->
+      <aside class="hidden lg:block lg:col-span-3 space-y-6">
+        <div class="bg-white p-5 rounded-xl border border-stone-200">
+          <div class="flex items-center justify-between pb-3 border-b border-stone-100 mb-4">
+            <h3 class="font-serif text-lg font-semibold text-livora-dark">Filters</h3>
+            <button onclick="showToast('Filters reset')" class="text-[11px] text-stone-400 hover:text-livora-dark">Reset All</button>
+          </div>
+
+          <!-- Metal -->
+          <div class="mb-5">
+            <h4 class="text-xs font-semibold uppercase tracking-wider text-stone-700 mb-3">Precious Metal</h4>
+            <div class="space-y-2 text-xs text-stone-600">
+              <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" checked class="rounded" /> 18k Yellow Gold</label>
+              <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded" /> 18k Rose Gold</label>
+              <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded" /> Platinum 950</label>
+              <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded" /> 14k White Gold</label>
+            </div>
+          </div>
+
+          <!-- Gemstone -->
+          <div class="mb-5">
+            <h4 class="text-xs font-semibold uppercase tracking-wider text-stone-700 mb-3">Gemstone</h4>
+            <div class="space-y-2 text-xs text-stone-600">
+              <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" checked class="rounded" /> Certified Diamond</label>
+              <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded" /> Colombian Emerald</label>
+              <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded" /> Burmese Ruby</label>
+              <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded" /> South Sea Pearl</label>
+            </div>
+          </div>
+
+          <!-- Price Range -->
+          <div>
+            <h4 class="text-xs font-semibold uppercase tracking-wider text-stone-700 mb-3">Price Range</h4>
+            <div class="space-y-2 text-xs text-stone-600">
+              <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="price" class="rounded" /> Under Rs. 200</label>
+              <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="price" class="rounded" /> Rs. 200 - Rs. 500</label>
+              <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="price" checked class="rounded" /> Rs. 500 - Rs. 1,000</label>
+              <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="price" class="rounded" /> Rs. 1,000+</label>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Products Grid -->
+      <main class="lg:col-span-9">
+        <!-- Sort & Count Bar -->
+        <div class="bg-white px-4 py-3 rounded-xl border border-stone-200 flex flex-wrap items-center justify-between gap-3 mb-6">
+          <span class="text-xs text-stone-500">Showing <strong>8</strong> Masterpiece Jewels</span>
+          <div class="flex items-center gap-2 text-xs">
+            <button onclick="toggleMobileFilters()" class="lg:hidden flex items-center gap-1.5 px-3 py-1.5 bg-stone-100 text-livora-dark rounded-lg text-xs font-semibold hover:bg-stone-200 transition">
+              <i class="fa-solid fa-filter text-[10px]"></i>
+              <span>Filters</span>
+            </button>
+            <span class="text-stone-500 hidden sm:inline">Sort by:</span>
+            <select class="bg-stone-50 border border-stone-200 rounded-lg px-2.5 py-1 text-xs text-livora-dark focus:outline-none">
+              <option>Curated Highlights</option>
+              <option>Price: High to Low</option>
+              <option>Price: Low to High</option>
+              <option>Highest Rated</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          
+          <!-- Item 1 -->
+          <div class="bg-white rounded-xl border border-stone-100 p-3 luxury-card flex flex-col justify-between">
+            <div class="relative rounded-lg overflow-hidden bg-stone-100 aspect-square mb-2.5">
+              <span class="absolute top-2 left-2 z-10 bg-livora-dark text-white text-[9px] font-semibold px-2 py-0.5 rounded">Bestseller</span>
+              <button onclick="toggleWishlist('Avela 18k Solitaire Choker', 699, 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?q=80&w=400&auto=format&fit=crop', this)" class="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-white/90 text-stone-600 hover:text-red-500 flex items-center justify-center">
+                <i class="fa-regular fa-heart text-xs"></i>
+              </button>
+              <a href="product-detail.html?name=Avela%2018k%20Solitaire%20Choker&price=699&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1599643477877-530eb83abc8e%3Fq%3D80%26w%3D400%26auto%3Dformat%26fit%3Dcrop&cat=Fine%20Jewelry" class="block w-full h-full">
+                <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+              </a>
+            </div>
+            <div>
+              <a href="product-detail.html?name=Avela%2018k%20Solitaire%20Choker&price=699&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1599643477877-530eb83abc8e%3Fq%3D80%26w%3D400%26auto%3Dformat%26fit%3Dcrop&cat=Fine%20Jewelry" class="hover:text-livora-sage transition">
+                <h3 class="font-medium text-xs text-livora-dark hover:text-livora-sage transition truncate">Avela 18k Solitaire Choker</h3>
+              </a>
+              <div class="text-xs font-bold text-livora-dark mt-1">Rs. 699</div>
+              <div class="flex items-center gap-1 text-[10px] text-amber-500 mt-1">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <span class="text-stone-400">(124)</span>
+              </div>
+            </div>
+            <button onclick="addToCart('Avela 18k Solitaire Choker', 699, 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?q=80&w=400&auto=format&fit=crop')" class="mt-2.5 w-full py-1.5 bg-stone-100 hover:bg-livora-dark hover:text-white text-livora-dark text-xs font-semibold rounded-lg transition">
+              + Add to Bag
+            </button>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="bg-white rounded-xl border border-stone-100 p-3 luxury-card flex flex-col justify-between">
+            <div class="relative rounded-lg overflow-hidden bg-stone-100 aspect-square mb-2.5">
+              <span class="absolute top-2 left-2 z-10 bg-livora-dark text-white text-[9px] font-semibold px-2 py-0.5 rounded">New</span>
+              <button onclick="toggleWishlist('Lume Emerald Solitaire Ring', 399, 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=400&auto=format&fit=crop', this)" class="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-white/90 text-stone-600 hover:text-red-500 flex items-center justify-center">
+                <i class="fa-regular fa-heart text-xs"></i>
+              </button>
+              <a href="product-detail.html?name=Lume%20Emerald%20Solitaire%20Ring&price=399&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1605100804763-247f67b3557e%3Fq%3D80%26w%3D400%26auto%3Dformat%26fit%3Dcrop&cat=Fine%20Jewelry" class="block w-full h-full">
+                <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+              </a>
+            </div>
+            <div>
+              <a href="product-detail.html?name=Lume%20Emerald%20Solitaire%20Ring&price=399&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1605100804763-247f67b3557e%3Fq%3D80%26w%3D400%26auto%3Dformat%26fit%3Dcrop&cat=Fine%20Jewelry" class="hover:text-livora-sage transition">
+                <h3 class="font-medium text-xs text-livora-dark hover:text-livora-sage transition truncate">Lume Emerald Solitaire Ring</h3>
+              </a>
+              <div class="text-xs font-bold text-livora-dark mt-1">Rs. 399</div>
+              <div class="flex items-center gap-1 text-[10px] text-amber-500 mt-1">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <span class="text-stone-400">(76)</span>
+              </div>
+            </div>
+            <button onclick="addToCart('Lume Emerald Solitaire Ring', 399, 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=400&auto=format&fit=crop')" class="mt-2.5 w-full py-1.5 bg-stone-100 hover:bg-livora-dark hover:text-white text-livora-dark text-xs font-semibold rounded-lg transition">
+              + Add to Bag
+            </button>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="bg-white rounded-xl border border-stone-100 p-3 luxury-card flex flex-col justify-between">
+            <div class="relative rounded-lg overflow-hidden bg-stone-100 aspect-square mb-2.5">
+              <button onclick="toggleWishlist('Orbi Baroque Pearl Drops', 89, 'https://images.unsplash.com/photo-1630019852942-f89202989a59?q=80&w=400&auto=format&fit=crop', this)" class="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-white/90 text-stone-600 hover:text-red-500 flex items-center justify-center">
+                <i class="fa-regular fa-heart text-xs"></i>
+              </button>
+              <a href="product-detail.html?name=Orbi%20Baroque%20Pearl%20Drops&price=89&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1630019852942-f89202989a59%3Fq%3D80%26w%3D400%26auto%3Dformat%26fit%3Dcrop&cat=Earrings" class="block w-full h-full">
+                <img src="https://images.unsplash.com/photo-1630019852942-f89202989a59?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+              </a>
+            </div>
+            <div>
+              <a href="product-detail.html?name=Orbi%20Baroque%20Pearl%20Drops&price=89&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1630019852942-f89202989a59%3Fq%3D80%26w%3D400%26auto%3Dformat%26fit%3Dcrop&cat=Earrings" class="hover:text-livora-sage transition">
+                <h3 class="font-medium text-xs text-livora-dark hover:text-livora-sage transition truncate">Orbi Baroque Pearl Drops</h3>
+              </a>
+              <div class="text-xs font-bold text-livora-dark mt-1">Rs. 89</div>
+              <div class="flex items-center gap-1 text-[10px] text-amber-500 mt-1">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <span class="text-stone-400">(213)</span>
+              </div>
+            </div>
+            <button onclick="addToCart('Orbi Baroque Pearl Drops', 89, 'https://images.unsplash.com/photo-1630019852942-f89202989a59?q=80&w=400&auto=format&fit=crop')" class="mt-2.5 w-full py-1.5 bg-stone-100 hover:bg-livora-dark hover:text-white text-livora-dark text-xs font-semibold rounded-lg transition">
+              + Add to Bag
+            </button>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="bg-white rounded-xl border border-stone-100 p-3 luxury-card flex flex-col justify-between">
+            <div class="relative rounded-lg overflow-hidden bg-stone-100 aspect-square mb-2.5">
+              <span class="absolute top-2 left-2 z-10 bg-livora-sage text-white text-[9px] font-semibold px-2 py-0.5 rounded">Heritage</span>
+              <button onclick="toggleWishlist('Eden Royal Kundan Set', 179, 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=350&auto=format&fit=crop', this)" class="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-white/90 text-stone-600 hover:text-red-500 flex items-center justify-center">
+                <i class="fa-regular fa-heart text-xs"></i>
+              </button>
+              <a href="product-detail.html?name=Eden%20Royal%20Kundan%20Set&price=179&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1535632066927-ab7c9ab60908%3Fq%3D80%26w%3D350%26auto%3Dformat%26fit%3Dcrop&cat=Fine%20Jewelry" class="block w-full h-full">
+                <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=350&auto=format&fit=crop" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+              </a>
+            </div>
+            <div>
+              <a href="product-detail.html?name=Eden%20Royal%20Kundan%20Set&price=179&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1535632066927-ab7c9ab60908%3Fq%3D80%26w%3D350%26auto%3Dformat%26fit%3Dcrop&cat=Fine%20Jewelry" class="hover:text-livora-sage transition">
+                <h3 class="font-medium text-xs text-livora-dark hover:text-livora-sage transition truncate">Eden Royal Kundan Set</h3>
+              </a>
+              <div class="text-xs font-bold text-livora-dark mt-1">Rs. 179</div>
+              <div class="flex items-center gap-1 text-[10px] text-amber-500 mt-1">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <span class="text-stone-400">(199)</span>
+              </div>
+            </div>
+            <button onclick="addToCart('Eden Royal Kundan Set', 179, 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=350&auto=format&fit=crop')" class="mt-2.5 w-full py-1.5 bg-stone-100 hover:bg-livora-dark hover:text-white text-livora-dark text-xs font-semibold rounded-lg transition">
+              + Add to Bag
+            </button>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="bg-white rounded-xl border border-stone-100 p-3 luxury-card flex flex-col justify-between">
+            <div class="relative rounded-lg overflow-hidden bg-stone-100 aspect-square mb-2.5">
+              <button onclick="toggleWishlist('Astra Tennis Bracelet', 129, 'https://images.unsplash.com/photo-1598560917505-59a3ad559071?q=80&w=350&auto=format&fit=crop', this)" class="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-white/90 text-stone-600 hover:text-red-500 flex items-center justify-center">
+                <i class="fa-regular fa-heart text-xs"></i>
+              </button>
+              <a href="product-detail.html?name=Astra%20Tennis%20Bracelet&price=129&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1598560917505-59a3ad559071%3Fq%3D80%26w%3D350%26auto%3Dformat%26fit%3Dcrop&cat=Fine%20Jewelry" class="block w-full h-full">
+                <img src="https://images.unsplash.com/photo-1598560917505-59a3ad559071?q=80&w=350&auto=format&fit=crop" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+              </a>
+            </div>
+            <div>
+              <a href="product-detail.html?name=Astra%20Tennis%20Bracelet&price=129&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1598560917505-59a3ad559071%3Fq%3D80%26w%3D350%26auto%3Dformat%26fit%3Dcrop&cat=Fine%20Jewelry" class="hover:text-livora-sage transition">
+                <h3 class="font-medium text-xs text-livora-dark hover:text-livora-sage transition truncate">Astra Tennis Bracelet</h3>
+              </a>
+              <div class="text-xs font-bold text-livora-dark mt-1">Rs. 129</div>
+              <div class="flex items-center gap-1 text-[10px] text-amber-500 mt-1">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <span class="text-stone-400">(276)</span>
+              </div>
+            </div>
+            <button onclick="addToCart('Astra Tennis Bracelet', 129, 'https://images.unsplash.com/photo-1598560917505-59a3ad559071?q=80&w=350&auto=format&fit=crop')" class="mt-2.5 w-full py-1.5 bg-stone-100 hover:bg-livora-dark hover:text-white text-livora-dark text-xs font-semibold rounded-lg transition">
+              + Add to Bag
+            </button>
+          </div>
+
+          <!-- Item 6 -->
+          <div class="bg-white rounded-xl border border-stone-100 p-3 luxury-card flex flex-col justify-between">
+            <div class="relative rounded-lg overflow-hidden bg-stone-100 aspect-square mb-2.5">
+              <button onclick="toggleWishlist('Ceramic Pearl Pendant', 49, 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?q=80&w=300&auto=format&fit=crop', this)" class="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-white/90 text-stone-600 hover:text-red-500 flex items-center justify-center">
+                <i class="fa-regular fa-heart text-xs"></i>
+              </button>
+              <a href="product-detail.html?name=Ceramic%20Pearl%20Pendant&price=49&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1599643477877-530eb83abc8e%3Fq%3D80%26w%3D300%26auto%3Dformat%26fit%3Dcrop&cat=Fine%20Jewelry" class="block w-full h-full">
+                <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+              </a>
+            </div>
+            <div>
+              <a href="product-detail.html?name=Ceramic%20Pearl%20Pendant&price=49&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1599643477877-530eb83abc8e%3Fq%3D80%26w%3D300%26auto%3Dformat%26fit%3Dcrop&cat=Fine%20Jewelry" class="hover:text-livora-sage transition">
+                <h3 class="font-medium text-xs text-livora-dark hover:text-livora-sage transition truncate">Ceramic Pearl Pendant</h3>
+              </a>
+              <div class="text-xs font-bold text-livora-dark mt-1">Rs. 49</div>
+              <div class="flex items-center gap-1 text-[10px] text-amber-500 mt-1">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <span class="text-stone-400">(89)</span>
+              </div>
+            </div>
+            <button onclick="addToCart('Ceramic Pearl Pendant', 49, 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?q=80&w=300&auto=format&fit=crop')" class="mt-2.5 w-full py-1.5 bg-stone-100 hover:bg-livora-dark hover:text-white text-livora-dark text-xs font-semibold rounded-lg transition">
+              + Add to Bag
+            </button>
+          </div>
+
+          <!-- Item 7 -->
+          <div class="bg-white rounded-xl border border-stone-100 p-3 luxury-card flex flex-col justify-between">
+            <div class="relative rounded-lg overflow-hidden bg-stone-100 aspect-square mb-2.5">
+              <span class="absolute top-2 left-2 z-10 bg-livora-gold text-white text-[9px] font-semibold px-2 py-0.5 rounded">Artisanal</span>
+              <button onclick="toggleWishlist('Nova 22k Temple Choker', 299, 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=350&auto=format&fit=crop', this)" class="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-white/90 text-stone-600 hover:text-red-500 flex items-center justify-center">
+                <i class="fa-regular fa-heart text-xs"></i>
+              </button>
+              <a href="product-detail.html?name=Nova%2022k%20Temple%20Choker&price=299&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1599643478518-a784e5dc4c8f%3Fq%3D80%26w%3D350%26auto%3Dformat%26fit%3Dcrop&cat=Fine%20Jewelry" class="block w-full h-full">
+                <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=350&auto=format&fit=crop" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+              </a>
+            </div>
+            <div>
+              <a href="product-detail.html?name=Nova%2022k%20Temple%20Choker&price=299&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1599643478518-a784e5dc4c8f%3Fq%3D80%26w%3D350%26auto%3Dformat%26fit%3Dcrop&cat=Fine%20Jewelry" class="hover:text-livora-sage transition">
+                <h3 class="font-medium text-xs text-livora-dark hover:text-livora-sage transition truncate">Nova 22k Temple Choker</h3>
+              </a>
+              <div class="text-xs font-bold text-livora-dark mt-1">Rs. 299</div>
+              <div class="flex items-center gap-1 text-[10px] text-amber-500 mt-1">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <span class="text-stone-400">(342)</span>
+              </div>
+            </div>
+            <button onclick="addToCart('Nova 22k Temple Choker', 299, 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=350&auto=format&fit=crop')" class="mt-2.5 w-full py-1.5 bg-stone-100 hover:bg-livora-dark hover:text-white text-livora-dark text-xs font-semibold rounded-lg transition">
+              + Add to Bag
+            </button>
+          </div>
+
+          <!-- Item 8 -->
+          <div class="bg-white rounded-xl border border-stone-100 p-3 luxury-card flex flex-col justify-between">
+            <div class="relative rounded-lg overflow-hidden bg-stone-100 aspect-square mb-2.5">
+              <span class="absolute top-2 left-2 z-10 bg-livora-sale text-white text-[9px] font-semibold px-2 py-0.5 rounded">-25% Off</span>
+              <button onclick="toggleWishlist('Aura Scented Amber Perfume Oil', 29, 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?q=80&w=300&auto=format&fit=crop', this)" class="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-white/90 text-stone-600 hover:text-red-500 flex items-center justify-center">
+                <i class="fa-regular fa-heart text-xs"></i>
+              </button>
+              <a href="product-detail.html?name=Aura%20Scented%20Amber%20Perfume%20Oil&price=29&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1592945403244-b3fbafd7f539%3Fq%3D80%26w%3D300%26auto%3Dformat%26fit%3Dcrop&cat=Artisanal%20Fragrance" class="block w-full h-full">
+                <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+              </a>
+            </div>
+            <div>
+              <a href="product-detail.html?name=Aura%20Scented%20Amber%20Perfume%20Oil&price=29&img=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1592945403244-b3fbafd7f539%3Fq%3D80%26w%3D300%26auto%3Dformat%26fit%3Dcrop&cat=Artisanal%20Fragrance" class="hover:text-livora-sage transition">
+                <h3 class="font-medium text-xs text-livora-dark hover:text-livora-sage transition truncate">Aura Scented Amber Oil</h3>
+              </a>
+              <div class="text-xs font-bold text-livora-dark mt-1">Rs. 29 <span class="text-[10px] text-stone-400 line-through font-normal">Rs. 39</span></div>
+              <div class="flex items-center gap-1 text-[10px] text-amber-500 mt-1">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <span class="text-stone-400">(45)</span>
+              </div>
+            </div>
+            <button onclick="addToCart('Aura Scented Amber Perfume Oil', 29, 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?q=80&w=300&auto=format&fit=crop')" class="mt-2.5 w-full py-1.5 bg-stone-100 hover:bg-livora-dark hover:text-white text-livora-dark text-xs font-semibold rounded-lg transition">
+              + Add to Bag
+            </button>
+          </div>
+
+        </div>
+      </main>
+
+    </div>
+  </section>
+
+  <!-- ANDROID APP BOTTOM BAR -->
+  <nav class="md:hidden android-bottom-bar px-3 py-1">
+    <div class="flex items-center justify-around text-center">
+      <a href="index.html" class="android-tab" id="tab-home"><i class="fa-solid fa-house"></i><span>Home</span></a>
+      <a href="fine-jewelry.html" class="android-tab active" id="tab-categories"><i class="fa-solid fa-shapes"></i><span>Catalog</span></a>
+      <a href="wishlist.html" class="android-tab relative" id="tab-wishlist"><i class="fa-regular fa-heart"></i><span class="wishlist-counter-badge absolute top-0.5 right-2 bg-livora-dark text-white text-[8px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center">2</span><span>Wishlist</span></a>
+      <a href="cart.html" class="android-tab relative" id="tab-cart"><i class="fa-solid fa-bag-shopping"></i><span class="cart-counter-badge absolute top-0.5 right-2 bg-livora-dark text-white text-[8px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center">3</span><span>Bag</span></a>
+      <a href="account.html" class="android-tab" id="tab-account"><i class="fa-regular fa-user"></i><span>Profile</span></a>
+    </div>
+  </nav>
+
+  <!-- CART DRAWER -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 pointer-events-none transition-opacity duration-300 opacity-0">
+    <div onclick="toggleCartDrawer()" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+    <div id="cart-panel" class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col justify-between transform translate-x-full transition-transform duration-300 pointer-events-auto">
+      <div class="p-4 sm:p-5 border-b border-stone-200 flex items-center justify-between bg-stone-50">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-bag-shopping text-livora-dark"></i>
+          <h3 class="font-serif text-lg font-semibold text-livora-dark">Your Shopping Bag (<span id="drawer-item-count">3</span>)</h3>
+        </div>
+        <button onclick="toggleCartDrawer()" class="w-8 h-8 rounded-full bg-stone-200 hover:bg-stone-300 flex items-center justify-center">
+          <i class="fa-solid fa-xmark text-stone-700 text-sm"></i>
+        </button>
+      </div>
+      <div class="p-5 flex-1 overflow-y-auto space-y-4 drawer-scroll" id="cart-items-container"></div>
+      <div class="p-5 border-t border-stone-200 bg-stone-50 space-y-3">
+        <div class="flex items-center justify-between text-sm">
+          <span class="text-stone-600">Estimated Total</span>
+          <span class="font-bold text-base text-livora-dark" id="drawer-subtotal">Rs. 1,647.00</span>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <a href="cart.html" class="py-3 bg-stone-100 text-livora-dark rounded-xl font-semibold text-xs text-center uppercase tracking-wider hover:bg-stone-200 transition">View Bag</a>
+          <a href="cart.html#checkout" class="py-3 bg-livora-dark text-white rounded-xl font-semibold text-xs text-center uppercase tracking-wider hover:bg-livora-sage transition flex items-center justify-center gap-1.5 shadow-md"><i class="fa-solid fa-lock text-[10px]"></i><span>Checkout</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/vivaha-nav.js"></script>
+</body>
+</html>
